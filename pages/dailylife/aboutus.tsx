@@ -10,7 +10,7 @@ export default function AboutUs(){
             <div className="container">
                 <div className="container p-5 md:mx-10">
                     <h1 className="text-4xl font-semibold text-gray-600 dark:text-gray-50 py-5">About us</h1>                    
-                    <div className="flex flex-col md:flex-row justify-center gap-4 space-y-2">
+                    <div className="flex flex-col md:flex-row justify-center gap-4 space-y-5">
                         <div className="bg-gray-200 dark:bg-gray-800 p-10 rounded-xl md:w-1/2 filter shadow-lg">
                             <div className="text-2xl py-5">
                                 <h2 className="text-gray-700 dark:text-gray-50">About</h2>

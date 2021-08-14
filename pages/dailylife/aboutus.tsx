@@ -18,7 +18,7 @@ export default function AboutUs(){
                             <div className="text-lg">
                                 <p className="text-gray-700 dark:text-gray-50">Dailylife is an e-commerce shopping system project for our 2nd year college at <span className="text-blue-700 dark:text-indigo-200">Saint Jude College manila</span> in course of Bachelor Science in Information Technology.</p>
                                 <p className="text-gray-700 dark:text-gray-50 mt-2">
-                                    Dailylife can make life easier to do shop, specially to those people who are not have enough time to go in malls just to buy clothes.
+                                    Dailylife can make life easier to do shopping, specially to those people who are not have enough time to go in malls just to buy clothes.
                                 </p> 
                                 <p className="float-right text-blue-800 dark:text-indigo-100 text-sm mt-2">
                                     Dailylife ⓒ2021

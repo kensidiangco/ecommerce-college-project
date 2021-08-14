@@ -1,4 +1,6 @@
 import { useState } from "react"
+import Head from 'next/head'
+
 export default function Contact() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -18,7 +20,10 @@ export default function Contact() {
         setSuccess('')
     }
     return (
-        <div>
+        <>
+            <Head>
+                <title>Contact</title>
+            </Head>
             <div className="container p-5 md:mx-10">
                     {!!success && 
                         <p className="text-center text-green-600 dark:text-green-200 py-5">{success} <span className="text-red-500 cursor-pointer mx-5" onClick={() => removeMessage()}>x</span></p>
@@ -56,6 +61,6 @@ export default function Contact() {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }

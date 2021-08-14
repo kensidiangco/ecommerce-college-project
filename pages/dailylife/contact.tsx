@@ -33,7 +33,7 @@ export default function Contact() {
                         <h1 className="text-2xl font-semibold text-gray-700 dark:text-gray-50 py-3">
                             Contact us!
                         </h1>
-                        <form className="flex flex-col gap-4 justify-center" onSubmit={handleSubmit}>
+                        <form className="flex flex-col gap-4 justify-center space-y-2 md:space-y-0" onSubmit={handleSubmit}>
                             <input 
                                 type="text" 
                                 placeholder="Your name..." 

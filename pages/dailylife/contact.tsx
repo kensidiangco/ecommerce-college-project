@@ -5,8 +5,8 @@ export default function Contact() {
     const [message, setMessage] = useState('')
     const [success, setSuccess] = useState('')
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
+    const handleSubmit = (event) => {
+        event.preventDefault()
 
         setName('')
         setEmail('')

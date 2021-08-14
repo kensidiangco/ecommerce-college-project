@@ -11,7 +11,7 @@ export default function Footer() {
                     <li className="mb-1"><a href="https://www.twitter.com/" target="_blank">Twitter</a></li>
                 </ul>
                 <ul>
-                    <h2 className="text-lg font-semibold  mb-2" htmlFor="social">
+                    <h2 className="text-lg font-semibold  mb-2">
                         <Link href="/dailylife/contact">
                             Contact us
                         </Link>
@@ -20,7 +20,7 @@ export default function Footer() {
                     <li className="mb-1">dailylife@dailylife.com</li>
                 </ul>
                 <ul>
-                    <h2 className="text-lg font-semibold mb-2" htmlFor="social">Address</h2>
+                    <h2 className="text-lg font-semibold mb-2">Address</h2>
                     <li className="mb-1">123 Dimalaman St. Tondo, Manila</li>
                 </ul>
             </div>

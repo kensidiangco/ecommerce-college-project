@@ -29,7 +29,7 @@ export default function Contact() {
                         <p className="text-center text-green-600 dark:text-green-200 py-5">{success} <span className="text-red-500 cursor-pointer mx-5" onClick={() => removeMessage()}>x</span></p>
                     }
                 <div className="flex justify-center">
-                    <div className="w-1/3 px-10 py-5 shadow-lg bg-gray-200 dark:bg-gray-700 rounded-2xl">
+                    <div className="md:w-1/3 px-10 py-5 shadow-lg bg-gray-200 dark:bg-gray-700 rounded-2xl">
                         <h1 className="text-2xl font-semibold text-gray-700 dark:text-gray-50 py-3">
                             Contact us!
                         </h1>

@@ -1,4 +1,4 @@
-import Link from "next/dist/client/link"
+import Link from "next/link"
 import {useTheme} from 'next-themes'
 import { Disclosure, Transition } from '@headlessui/react'
 
@@ -36,9 +36,7 @@ export default function Navigation() {
 
                             <div>
                                 <Link href="/" className="flex items-center py-4 px-2">
-                                    <span className="font-semibold text-lg"
-                                        >Dailylife</span
-                                    >
+                                    <span className="font-semibold text-lg">Dailylife</span>
                                 </Link>
                             </div>
                             <ul className="hidden md:flex items-center space-x-1">

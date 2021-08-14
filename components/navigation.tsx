@@ -7,7 +7,7 @@ export default function Navigation() {
     
     return(
         <>  
-            <nav className="bg-white sticky shadow-md top-0 z-10 dark:bg-black dark:text-gray-50 text-gray-700 transition delay-100">
+            <nav className="bg-white sticky shadow-md top-0 z-50 dark:bg-black dark:text-gray-50 text-gray-700 transition delay-100">
                 <ul className="float-left hidden md:flex items-center space-x-1 px-10 text-sm static">
                     <li className="py-2 px-2 cursor-pointer">
                         <Link href="/dailylife/aboutus">About us</Link>

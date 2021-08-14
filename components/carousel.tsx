@@ -29,9 +29,9 @@ export default function CarouselFeed(){
     return(
         <div className="container mx-auto md:px-20 md:py-20 px-10 py-10">
             <Carousel
+            className="z-10"
             ssr
             partialVisbile
-            
             itemClass="image-item"
             responsive={responsive}
             >

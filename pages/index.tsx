@@ -1,9 +1,8 @@
 import Head from 'next/head'
 import CategoryGallery from '../components/categoryGallery'
 import CarouselFeed from '../components/carousel'
-import UAParser from "ua-parser-js";
 
-function Home({deviceType}) {
+function Home() {
   return (
     <div>
       <Head>
@@ -12,22 +11,9 @@ function Home({deviceType}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <CategoryGallery />
-      <CarouselFeed deviceType={deviceType}/>
+      <CarouselFeed />
     </div>
   )
 }
 
-Home.getInitialProps = ({ req }) => {
-  let userAgent;
-  if (req) {
-    userAgent = req.headers["user-agent"];
-  } else {
-    userAgent = navigator.userAgent;
-  }
-  const parser = new UAParser();
-  parser.setUA(userAgent);
-  const result = parser.getResult();
-  const deviceType = (result.device && result.device.type) || "desktop";
-  return { deviceType };
-};
 export default Home;

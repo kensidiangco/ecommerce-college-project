@@ -2,7 +2,7 @@ import { Image } from "semantic-ui-react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-export default function CarouselFeed({deviceType}){
+export default function CarouselFeed(){
     const responsive = {
         desktop: {
           breakpoint: { max: 3000, min: 1024 },
@@ -31,7 +31,7 @@ export default function CarouselFeed({deviceType}){
             <Carousel
             ssr
             partialVisbile
-            deviceType={deviceType}
+            
             itemClass="image-item"
             responsive={responsive}
             >

@@ -35,8 +35,8 @@ export default function Navigation() {
                         <div className="flex space-x-7 items-center cursor-pointer">
 
                             <div>
-                                <Link href="/" className="flex items-center py-4 px-2">
-                                    <span className="font-semibold text-lg">Dailylife</span>
+                                <Link href="/">
+                                    <span className="flex items-center py-4 px-2 font-semibold text-lg">Dailylife</span>
                                 </Link>
                             </div>
                             <ul className="hidden md:flex items-center space-x-1">

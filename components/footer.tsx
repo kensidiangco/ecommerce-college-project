@@ -5,7 +5,7 @@ export default function Footer() {
         <footer className="bg-gray-200 shadow-lg dark:bg-black text-gray-700 dark:text-gray-50 transition delay-100">
             <div className="py-10 px-10 md:flex justify-center md:space-x-20 text-center grid gap-3">
                 <ul>
-                    <h2 className="text-lg font-semibold mb-2" htmlFor="social">Social</h2>
+                    <h2 className="text-lg font-semibold mb-2">Social</h2>
                     <li className="mb-1"><a href="https://web.facebook.com/?_rdc=1&_rdr" target="_blank">Facebook</a></li>
                     <li className="mb-1"><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
                     <li className="mb-1"><a href="https://www.twitter.com/" target="_blank">Twitter</a></li>

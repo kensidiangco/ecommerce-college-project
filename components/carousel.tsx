@@ -42,6 +42,7 @@ export default function CarouselFeed(){
                             draggable={false}
                             style={{ width: "90%", height: "90%" }}
                             src={image}
+                            alt="tinda"
                         />
                         <div className="">
                             <p>Sample item</p>    

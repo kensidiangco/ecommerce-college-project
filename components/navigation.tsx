@@ -35,7 +35,7 @@ export default function Navigation() {
                         <div className="flex space-x-7 items-center cursor-pointer">
 
                             <div>
-                                <Link href="/">
+                                <Link href="/" passHref>
                                     <span className="flex items-center py-4 px-2 font-semibold text-lg">Dailylife</span>
                                 </Link>
                             </div>
@@ -57,7 +57,7 @@ export default function Navigation() {
                         <ul className="hidden md:flex items-center space-x-3">
                             <li className="py-4 px-2">
                                 <span className="relative inline-block cursor-pointer">    
-                                    <Link href="#">
+                                    <Link href="#" passHref>
                                         <span className="text-lg">Cart</span>
                                     </Link>
                                     <span className="absolute bottom-2 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-3 bg-red-600 rounded-full">2</span>

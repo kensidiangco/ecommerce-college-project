@@ -45,9 +45,8 @@ export default function Contact() {
                                 required 
                             />
                             <textarea
-                                width="100%"
                                 placeholder="messages..."
-                                className="p-4 dark:bg-gray-500 rounded-md bg-gray-100"
+                                className="w-full p-4 dark:bg-gray-500 rounded-md bg-gray-100"
                                 value={message}    
                                 onChange={(e) => setMessage(e.target.value)}
                                 required

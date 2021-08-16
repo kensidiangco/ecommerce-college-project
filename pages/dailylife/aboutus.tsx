@@ -16,9 +16,11 @@ export default function AboutUs(){
                                 <h2 className="text-gray-700 dark:text-gray-50">About</h2>
                             </div>
                             <div className="text-lg">
-                                <p className="text-gray-700 dark:text-gray-50">Dailylife is an e-commerce shopping system project for our 2nd year college at <span className="text-blue-700 dark:text-indigo-200">Saint Jude College manila</span> in course of Bachelor Science in Information Technology.</p>
+                                <p className="text-gray-700 dark:text-gray-50">
+                                    Dailylife is an e-commerce shopping system project for our 2nd year college of <span className="text-blue-700 dark:text-indigo-200">BSIT in Saint Jude College manila</span>.
+                                </p>
                                 <p className="text-gray-700 dark:text-gray-50 mt-2">
-                                    Dailylife can make life easier to do shopping, specially to those people who are not have enough time to go in malls just to buy clothes.
+                                    Dailylife will make our lives more convenient to shop online specially to those people who does not have enough time to go to mall.
                                 </p> 
                                 <p className="float-right text-blue-800 dark:text-indigo-100 text-sm mt-2">
                                     Dailylife ⓒ2021
@@ -33,7 +35,7 @@ export default function AboutUs(){
                             <div className="text-lg">
                                 <p className="text-gray-700 dark:text-gray-50">Our goal is to provide a digitize way to sell an affordable, high quality and brand new products that will satisfy your daily life.</p>
                                 <p className="text-gray-700 dark:text-gray-50 mt-2">
-                                    We provide a fast delivery for your orders and you can be sure that your orders are well good and safe.
+                                   We provide fast delivery of your parcel and we assure you that your orders are secured and handled with care.
                                 </p>
                                 <p className="text-gray-700 dark:text-gray-50 mt-2">
                                     Dailylife is here to server you.

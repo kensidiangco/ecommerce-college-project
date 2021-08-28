@@ -24,7 +24,7 @@ export default function Navigation() {
                 </ul>
                 <ul className="float-right hidden md:flex items-center space-x-1 px-10 text-sm">
                     <li className="py-2 px-2 cursor-pointer">
-                        <a>Login</a>
+                        <Link href="/dailylife/login">Login</Link>
                     </li>
                     <li className="py-2 px-2 cursor-pointer">
                         <a>Signup</a>
@@ -114,7 +114,7 @@ export default function Navigation() {
                                             </ul>
                                             <ul className="flex md:gap-2 py-2">
                                                 <li className="cursor-pointer m-2">
-                                                    <a>Login</a>
+                                                    <Link href="/dailylife/login">Login</Link>
                                                 </li>
                                                 <li className="cursor-pointer m-2">
                                                     <a>Signup</a>

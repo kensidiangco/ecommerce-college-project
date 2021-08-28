@@ -33,25 +33,25 @@ export default function Contact() {
                         <h1 className="text-2xl font-semibold text-gray-700 dark:text-gray-50 py-3">
                             Contact us!
                         </h1>
-                        <form className="flex flex-col gap-4 justify-center space-y-2 md:space-y-0" onSubmit={handleSubmit}>
+                        <form autocomplete="off" className="flex flex-col gap-4 justify-center space-y-2 md:space-y-0" onSubmit={handleSubmit}>
                             <input 
                                 type="text" 
                                 placeholder="Your name..." 
-                                className="p-3 dark:bg-gray-500 bg-gray-100 rounded-md" 
+                                className="p-3 dark:bg-gray-500 bg-gray-50 rounded-lg" 
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 required/>
                             <input 
                                 type="email" 
                                 placeholder="Your email..." 
-                                className="p-3 dark:bg-gray-500 bg-gray-100 rounded-md" 
+                                className="p-3 dark:bg-gray-500 bg-gray-50 rounded-lg" 
                                 value={email}    
                                 onChange={(e) => setEmail(e.target.value)}
                                 required 
                             />
                             <textarea
                                 placeholder="messages..."
-                                className="w-full p-4 dark:bg-gray-500 rounded-md bg-gray-100"
+                                className="w-full p-4 dark:bg-gray-500 bg-gray-50 rounded-lg"
                                 value={message}    
                                 onChange={(e) => setMessage(e.target.value)}
                                 required

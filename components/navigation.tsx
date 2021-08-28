@@ -27,7 +27,7 @@ export default function Navigation() {
                         <Link href="/dailylife/login">Login</Link>
                     </li>
                     <li className="py-2 px-2 cursor-pointer">
-                        <a>Signup</a>
+                        <Link href="/dailylife/signup">Signup</Link>
                     </li>
                 </ul>
                 <div className="max-w-6xl mx-auto px-4 p-6">
@@ -57,7 +57,7 @@ export default function Navigation() {
                         <ul className="hidden md:flex items-center space-x-3">
                             <li className="py-4 px-2">
                                 <span className="relative inline-block cursor-pointer">    
-                                    <Link href="#" passHref>
+                                    <Link href="/dailylife/cart" passHref>
                                         <span className="text-lg">Cart</span>
                                     </Link>
                                     <span className="absolute bottom-2 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-3 bg-red-600 rounded-full">2</span>
@@ -92,7 +92,7 @@ export default function Navigation() {
                                         <Disclosure.Panel className="bg-white flex flex-col gap-2 items-center absolute inset-x-0 top-2/3 w-full dark:bg-black transition delay-150 py-10" static>
                                             <Disclosure.Button as="span" className="dark:text-gray-50 text-black py-5">
                                                 <span className="relative inline-block cursor-pointer text-2xl">    
-                                                    <Link href="/">
+                                                    <Link href="/dailylife/cart">
                                                         Cart
                                                     </Link>
                                                     <span className="absolute bottom-2 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-4 bg-red-600 rounded-full">2</span>
@@ -117,7 +117,7 @@ export default function Navigation() {
                                                     <Link href="/dailylife/login">Login</Link>
                                                 </li>
                                                 <li className="cursor-pointer m-2">
-                                                    <a>Signup</a>
+                                                    <Link href="/dailylife/signup">Signup</Link>
                                                 </li>
                                             </ul>
                                             <Disclosure.Button as="span" className="dark:text-gray-50 text-black py-4">

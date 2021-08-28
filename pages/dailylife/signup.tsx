@@ -38,7 +38,7 @@ export default function Signup() {
 				<div className="px-10 py-5 shadow-lg bg-gray-200 dark:bg-gray-700 rounded-2xl">
 					<p className="text-2xl font-semibold px-3 py-2 text-gray-700 dark:text-gray-50">Create your account.</p>
 					{!!successSignup && <p className="text-center text-green-600 p2">{successSignup}</p>}
-					<form onSubmit={handleSubmit} autocomplete="off" className="flex flex-col gap-2">
+					<form onSubmit={handleSubmit} autoComplete="off" className="flex flex-col gap-2">
 						<input 
 							type="text" 
 							name="username" 

@@ -25,7 +25,7 @@ export default function Login() {
 			<div className="flex justify-center py-20">
 				<div className="px-10 py-5 shadow-lg bg-gray-200 dark:bg-gray-700 rounded-2xl">
 					<p className="text-2xl font-semibold p-2 text-gray-700 dark:text-gray-50">Login your account.</p>
-					<form onSubmit={handleSubmit} autocomplete="off" className="flex flex-col gap-2">
+					<form onSubmit={handleSubmit} autoComplete="off" className="flex flex-col gap-2">
 						<input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)}
 							className="p-3 dark:bg-gray-500 bg-gray-50 rounded-lg" required />
 						<input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}

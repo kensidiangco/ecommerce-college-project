@@ -33,7 +33,7 @@ export default function Login() {
 						<input type="submit" value="Login" className="p-4 bg-blue-500 text-gray-50 dark:bg-gray-900 dark:hover:bg-gray-800 rounded-md hover:bg-indigo-500 transition delay-100 cursor-pointer" />
 					</form>
 					<div className="text-blue-700 dark:text-gray-200 text-center pt-2">
-						<Link href="/dailylife/signup">Doesn't have an account? Signup</Link>
+						<Link href="/dailylife/signup">Doesn&apos;t have an account? Signup</Link>
 					</div>
 				</div>
 			</div>

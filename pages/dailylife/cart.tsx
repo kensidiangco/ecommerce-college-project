@@ -45,7 +45,7 @@ export default function Cart() {
 						<div className="p-2 md:p-5 flex flex-row items-center gap-4">
 							<Image src={"/first.jpeg"} width={80} height={80} objectFit="contain" alt="Sample image"/>
 							<div className="flex flex-col justify-center gap-px">
-								<p className="text-md font-semibold text-gray-700 dark:text-gray-50 transition delay-100">Sample item <span className="text-sm text-gray-500 dark:text-gray-400 transition delay-100">1pcs</span>
+								<p className="text-md font-semibold text-gray-700 dark:text-gray-50 transition delay-100">Sample item 
 								</p>
 								<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-100">Color: Wheat</p>
 								<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-100">Size: S,M,L</p>
@@ -56,7 +56,7 @@ export default function Cart() {
 						<div className="p-2 md:p-5 flex flex-row items-center gap-4">
 							<Image src={"/second.jpeg"} width={80} height={80} objectFit="contain" alt="Sample image"/>
 							<div className="flex flex-col justify-center gap-px">
-								<p className="text-md font-semibold text-gray-700 dark:text-gray-50 transition delay-100">Sample item <span className="text-sm text-gray-500 dark:text-gray-400 transition delay-100">1pcs</span>
+								<p className="text-md font-semibold text-gray-700 dark:text-gray-50 transition delay-100">Sample item 
 								</p>
 								<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-100">Color: White</p>
 								<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-100">Size: S,M,L</p>
@@ -67,7 +67,7 @@ export default function Cart() {
 						<div className="p-2 md:p-5 flex flex-row items-center gap-4">
 							<Image src={"/third.jpeg"} width={80} height={80} objectFit="contain" alt="Sample image"/>
 							<div className="flex flex-col justify-center gap-px">
-								<p className="text-md font-semibold text-gray-700 dark:text-gray-50 transition delay-100">Sample item <span className="text-sm text-gray-500 dark:text-gray-400 transition delay-100">1pcs</span>
+								<p className="text-md font-semibold text-gray-700 dark:text-gray-50 transition delay-100">Sample item 
 								</p>
 								<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-100">Color: White, Black</p>
 								<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-100">Size: S,M,L</p>
@@ -78,7 +78,7 @@ export default function Cart() {
 						<div className="p-2 md:p-5 flex flex-row items-center gap-4">
 							<Image src={"/second.jpeg"} width={80} height={80} objectFit="contain" alt="Sample image"/>
 							<div className="flex flex-col justify-center gap-px">
-								<p className="text-md font-semibold text-gray-700 dark:text-gray-50 transition delay-100">Sample item <span className="text-sm text-gray-500 dark:text-gray-400 transition delay-100">1pcs</span>
+								<p className="text-md font-semibold text-gray-700 dark:text-gray-50 transition delay-100">Sample item 
 								</p>
 								<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-100">Color: White</p>
 								<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-100">Size: S,M,L</p>

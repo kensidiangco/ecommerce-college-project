@@ -8,25 +8,25 @@ export default function Navigation() {
     return(
         <>  
             <nav className="bg-white sticky shadow-md top-0 z-50 dark:bg-black dark:text-gray-50 text-gray-700 transition delay-100">
-                <ul className="float-left hidden md:flex items-center space-x-1 px-10 text-sm static">
-                    <li className="py-2 px-2 cursor-pointer">
+                <ul className="float-left hidden md:flex items-center space-x-1 px-10 text-sm static mt-px">
+                    <li className="py-2 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition delay-50 cursor-pointer">
                         <Link href="/dailylife/aboutus">About us</Link>
                     </li>
-                    <li className="absolute left-28 flex items-center">
+                    <li className="absolute left-28 flex">
                         <input 
                             aria-label="Toggle Dark Mode"
                             type="submit"
-                            className="p-3 order-2 md:order-3"
+                            className="p-2 rounded-md order-2 md:order-3 cursor-pointer"
                             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                             value={theme === 'dark' ? 'Light' : 'Dark'}
                         />
                     </li>
                 </ul>
-                <ul className="float-right hidden md:flex items-center space-x-1 px-10 text-sm">
-                    <li className="py-2 px-2 cursor-pointer">
+                <ul className="float-right hidden md:flex items-center space-x-1 px-10 text-sm mt-px">
+                    <li className="py-2 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition delay-50 cursor-pointer">
                         <Link href="/dailylife/login">Login</Link>
                     </li>
-                    <li className="py-2 px-2 cursor-pointer">
+                    <li className="py-2 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition delay-50 cursor-pointer">
                         <Link href="/dailylife/signup">Signup</Link>
                     </li>
                 </ul>
@@ -40,22 +40,22 @@ export default function Navigation() {
                                 </Link>
                             </div>
                             <ul className="hidden md:flex items-center space-x-1">
-                                <li className="py-4 px-2">
+                                <li className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition delay-50">
                                     <Link href="#">Search</Link>
                                 </li>
-                                <li className="py-4 px-2">
+                                <li className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition delay-50">
                                     <Link href="#">Men</Link>
                                 </li>
-                                <li className="py-4 px-2">
+                                <li className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition delay-50">
                                     <Link href="#">Women</Link>
                                 </li>
-                                <li className="py-4 px-2">
+                                <li className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition delay-50">
                                     <Link href="#">Unisex</Link>
                                 </li>
                             </ul>
                         </div>
                         <ul className="hidden md:flex items-center space-x-3">
-                            <li className="py-4 px-2">
+                            <li className="py-4 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition delay-50">
                                 <span className="relative inline-block cursor-pointer">    
                                     <Link href="/dailylife/cart" passHref>
                                         <span className="text-lg">Cart</span>
@@ -98,28 +98,28 @@ export default function Navigation() {
                                                     <span className="absolute bottom-2 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-4 bg-red-600 rounded-full">2</span>
                                                 </span>
                                             </Disclosure.Button>
-                                            <ul className="flex flex-col gap-4 items-center">
-                                                <li className="cursor-pointer py-1">
+                                            <div className="flex flex-col gap-4 items-center">
+                                                <Disclosure.Button className="cursor-pointer py-1">
                                                     <Link href="#">Search</Link>
-                                                </li>
-                                                <li className="cursor-pointer py-1">
+                                                </Disclosure.Button>
+                                                <Disclosure.Button className="cursor-pointer py-1">
                                                     <Link href="#">Men</Link>
-                                                </li>
-                                                <li className="cursor-pointer py-1">
+                                                </Disclosure.Button>
+                                                <Disclosure.Button className="cursor-pointer py-1">
                                                     <Link href="#">Women</Link>
-                                                </li>
-                                                <li className="cursor-pointer py-1">
+                                                </Disclosure.Button>
+                                                <Disclosure.Button className="cursor-pointer py-1">
                                                     <Link href="#">Unisex</Link>
-                                                </li>
-                                            </ul>
-                                            <ul className="flex md:gap-2 py-2">
-                                                <li className="cursor-pointer m-2">
+                                                </Disclosure.Button>
+                                            </div>
+                                            <div className="flex md:gap-2 py-2">
+                                                <Disclosure.Button className="cursor-pointer m-2">
                                                     <Link href="/dailylife/login">Login</Link>
-                                                </li>
-                                                <li className="cursor-pointer m-2">
+                                                </Disclosure.Button>
+                                                <Disclosure.Button className="cursor-pointer m-2">
                                                     <Link href="/dailylife/signup">Signup</Link>
-                                                </li>
-                                            </ul>
+                                                </Disclosure.Button>
+                                            </div>
                                             <Disclosure.Button as="span" className="dark:text-gray-50 text-black py-4">
                                                 <Link href="/dailylife/aboutus">
                                                     About us

@@ -35,7 +35,7 @@ export default function Signup() {
 				<title>Sign up</title>
 			</Head>
 			<div className="flex justify-center py-10">
-				<div className="px-5 py-5 md:px-10 md:py-5 shadow-lg bg-gray-200 dark:bg-gray-700 rounded-2xl">
+				<div className="p-5 md:px-10 md:py-5 shadow-lg bg-gray-200 dark:bg-gray-700 rounded-2xl">
 					<p className="text-xl md:text-2xl font-semibold px-3 py-2 text-gray-700 dark:text-gray-50">Create your account.</p>
 					{!!successSignup && <p className="text-center text-green-600 p2">{successSignup}</p>}
 					<form onSubmit={handleSubmit} autoComplete="off" className="flex flex-col gap-2">

@@ -7,8 +7,8 @@ export default function AboutUs(){
             <Head>
                 <title>About us</title>
             </Head>
-            <div className="container">
-                <div className="container p-5 md:mx-10">
+            <div>
+                <div className="container p-5 mx-auto">
                     <h1 className="text-4xl font-semibold text-gray-600 dark:text-gray-50 py-5">About us</h1>                    
                     <div className="flex flex-col md:flex-row justify-center gap-4 space-y-5 md:space-y-0">
                         <div className="bg-gray-200 dark:bg-gray-800 p-10 rounded-xl md:w-1/2 filter shadow-lg">
@@ -49,10 +49,10 @@ export default function AboutUs(){
 
                 </div>
                 
-                <div className="container p-5 md:mx-10">
+                <div className="container p-5 mx-auto">
                     <h1 className="text-4xl font-semibold text-gray-700 dark:text-gray-50 py-5">Developers</h1>
 
-                    <div className="flex flex-col md:flex-row flex-wrap gap-x-10 gap-y-10 justify-center place-items-center place-items-center m-5 space-y-5 md:space-y-0">
+                    <div className="flex flex-col md:flex-row flex-wrap md:gap-10 justify-center place-items-center place-items-center m-5 space-y-5 md:space-y-0">
                         <div className="bg-gray-200 text-gray-900 dark:text-gray-50 dark:bg-gray-800 rounded-2xl flex flex-col gap-4 md:rounded-2xl filter shadow-lg md:w-80">  
                             <img alt="John Keneth Sidiangco" src="/johnkenethsidiangco.jpg" className="rounded-2xl object-contain filter shadow-lg transform hover:scale-95 transition duration-300"/>
                             <div className="mt-4 md:mt-px text-gray-800 dark:text-gray-50 px-5 pb-5">
@@ -82,9 +82,7 @@ export default function AboutUs(){
                                 <p className="md:text-md">Developer</p>
                             </div>
                         </div>
-                    </div>
 
-                    <div className="flex flex-col md:flex-row flex-wrap gap-x-10 gap-y-10 justify-center place-items-center place-items-center m-5 gap-5 space-y-5 md:space-y-0">
                         <div className="bg-gray-200 text-gray-900 dark:text-gray-50 dark:bg-gray-800 rounded-2xl flex flex-col gap-4 md:rounded-2xl filter shadow-lg md:w-80">  
                             <img alt="Stephanie" src="/steph.jpg" className="rounded-2xl object-contain filter shadow-lg transform hover:scale-95 transition duration-300"/>
                             <div className="mt-4 md:mt-px text-gray-800 dark:text-gray-50 px-5 pb-5">

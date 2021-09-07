@@ -8,7 +8,7 @@ import { ThemeProvider } from 'next-themes'
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute="class">
-      <div className="bg-gray-50 dark:bg-gray-900 dark:text-gray-50 transition delay-150">
+      <div className="bg-gray-50 dark:bg-dark dark:text-gray-50 transition delay-150">
         <Navigation />
         <Component {...pageProps} />
         <Footer />

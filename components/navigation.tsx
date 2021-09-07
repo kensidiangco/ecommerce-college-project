@@ -7,9 +7,9 @@ export default function Navigation() {
     
     return(
         <>  
-            <nav className="bg-white sticky shadow-md top-0 z-50 dark:bg-black dark:text-gray-50 text-gray-700 transition delay-100">
+            <nav className="bg-white sticky shadow-md top-0 z-50 dark:bg-dark-nav-footer dark:text-gray-50 text-gray-700 transition delay-100">
                 <ul className="float-left hidden md:flex items-center space-x-1 px-10 text-sm static mt-px">
-                    <li className="py-2 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition delay-50 cursor-pointer">
+                    <li className="py-2 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50 cursor-pointer">
                         <Link href="/dailylife/aboutus">About us</Link>
                     </li>
                     <li className="absolute left-28 flex">
@@ -23,10 +23,10 @@ export default function Navigation() {
                     </li>
                 </ul>
                 <ul className="float-right hidden md:flex items-center space-x-1 px-10 text-sm mt-px">
-                    <li className="py-2 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition delay-50 cursor-pointer">
+                    <li className="py-2 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50 cursor-pointer">
                         <Link href="/dailylife/login">Login</Link>
                     </li>
-                    <li className="py-2 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition delay-50 cursor-pointer">
+                    <li className="py-2 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50 cursor-pointer">
                         <Link href="/dailylife/signup">Signup</Link>
                     </li>
                 </ul>
@@ -40,22 +40,22 @@ export default function Navigation() {
                                 </Link>
                             </div>
                             <ul className="hidden md:flex items-center space-x-1">
-                                <li className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition delay-50">
+                                <li className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50">
                                     <Link href="#">Search</Link>
                                 </li>
-                                <li className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition delay-50">
+                                <li className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50">
                                     <Link href="#">Men</Link>
                                 </li>
-                                <li className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition delay-50">
+                                <li className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50">
                                     <Link href="#">Women</Link>
                                 </li>
-                                <li className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition delay-50">
+                                <li className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50">
                                     <Link href="#">Unisex</Link>
                                 </li>
                             </ul>
                         </div>
                         <ul className="hidden md:flex items-center space-x-3">
-                            <li className="py-4 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition delay-50">
+                            <li className="py-4 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50">
                                 <span className="relative inline-block cursor-pointer">    
                                     <Link href="/dailylife/cart" passHref>
                                         <span className="text-lg dark:text-gray-50 text-gray-900">Cart</span>
@@ -89,7 +89,7 @@ export default function Navigation() {
                                         leaveFrom="opacity-100"
                                         leaveTo="opacity-0"
                                     >
-                                        <Disclosure.Panel className="bg-white flex flex-col gap-2 items-center absolute inset-x-0 top-2/3 w-full dark:bg-black transition delay-150 py-10" static>
+                                        <Disclosure.Panel className="bg-white flex flex-col gap-2 items-center absolute inset-x-0 top-2/3 w-full dark:bg-dark-nav-footer transition delay-150 py-10" static>
                                             <Disclosure.Button as="span" className="dark:text-gray-50 text-black py-5">
                                                 <span className="relative inline-block cursor-pointer text-2xl">    
                                                     <Link href="/dailylife/cart">
@@ -129,7 +129,7 @@ export default function Navigation() {
                                                 <input 
                                                     aria-label="Toggle Dark Mode"
                                                     type="submit"
-                                                    className="p-3 order-2 md:order-3 dark:bg-gray-900" 
+                                                    className="p-3 order-2 md:order-3 dark:bg-dark-button dar:hover:bg-button-hover" 
                                                     onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                                                     value={theme === 'dark' ? 'Light' : 'Dark'}
                                                 />

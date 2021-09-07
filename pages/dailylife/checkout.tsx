@@ -16,11 +16,11 @@ export default function Checkout() {
 			</Head>
 			<div className="container mx-auto">
 				<div className="flex flex-col-reverse md:flex-row justify-center p-4 md:px-5 md:py-10 md:gap-10 gap-5">
-					<form onSubmit={onSubmit} className="flex flex-col gap-2 p-5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-50" autoComplete="off">
-						<h2 className="text-xl">Information</h2>
+					<form onSubmit={onSubmit} className="flex flex-col gap-2 p-5 rounded-xl bg-gray-100 dark:bg-dark-card text-gray-800 dark:text-gray-50" autoComplete="off">
+						<h2 className="text-xl font-semibold">Information</h2>
 						<input type="email" name="email" placeholder="Email" className="p-2 rounded-md" required/>
 
-						<h2 className="mt-2 text-xl">Delivery address</h2>
+						<h2 className="mt-2 text-xl font-semibold">Delivery address</h2>
 						<input type="text" name="name" placeholder="Full name" className="p-2 rounded-md" required/>
 						<input type="text" name="address1" placeholder="Present address" className="p-2 rounded-md" required/>
 						<input type="text" name="brgy" placeholder="Baranggay" className="p-2 rounded-md" required/>
@@ -28,7 +28,7 @@ export default function Checkout() {
 						<input type="text" name="district" placeholder="District" className="p-2 rounded-md" required/>
 						<input type="text" name="zip code" placeholder="Zip code" className="p-2 rounded-md" required/>
 
-						<h2 className="mt-2 text-xl">Payment method</h2>
+						<h2 className="mt-2 text-xl font-semibold">Payment method</h2>
 						<input type="text" name="Voucher" placeholder="Voucher code" className="p-2 rounded-md"/>
 						<select name="delivery" className="p-2 rounded-md" required>
 							<option value="cod">COD</option>
@@ -36,11 +36,11 @@ export default function Checkout() {
 							<option value="paypal" disabled>Paypal</option>
 						</select>
 						
-						<input type="submit" value="Place order" className="p-3 mt-2 bg-blue-500 text-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 rounded-md hover:bg-blue-400 transition delay-100 cursor-pointer"/>
+						<input type="submit" value="Place order" className="p-3 mt-2 bg-blue-500 text-gray-50 dark:bg-dark-button dark:hover:bg-button-hover rounded-md hover:bg-blue-400 transition delay-100 cursor-pointer"/>
 					</form>
 					<div className="justify-center md:px-5 md:py-10">
-						<div className="flex flex-col gap-2 p-5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-50">
-							<p className="text-xl">Order summary</p>
+						<div className="flex flex-col gap-2 p-5 rounded-xl bg-gray-100 dark:bg-dark-card text-gray-800 dark:text-gray-50">
+							<p className="text-xl font-semibold">Order summary</p>
 							<div className="flex flex-row gap-2 md:gap-4 items-center">
 								<Image src={"/fourth.png"} width={100} height={100} objectFit="contain" alt="Sample image"/>
 								<div>

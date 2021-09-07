@@ -36,7 +36,7 @@ export default function Signup() {
 			</Head>
 			<div className="flex justify-center py-10">
 				<div className="p-5 md:px-7 md:py-5 shadow-lg bg-gray-200 dark:bg-gray-700 rounded-2xl">
-					<p className="text-xl md:text-xl font-semibold py-2 text-gray-700 dark:text-gray-50">Create your account.</p>
+					<p className="text-xl md:text-2xl font-semibold py-2 text-gray-700 dark:text-gray-50">Create your account.</p>
 					{!!successSignup && <p className="text-center text-green-600 p2">{successSignup}</p>}
 					<form onSubmit={handleSubmit} autoComplete="off" className="flex flex-col gap-2 mt-2">
 						<input 
@@ -86,7 +86,7 @@ export default function Signup() {
 							className="p-2 md:p-3 mt-px bg-blue-500 text-gray-50 dark:bg-gray-900 dark:hover:bg-gray-800 rounded-md hover:bg-blue-400 transition delay-100 cursor-pointer" 
 						/>
 					</form>
-					<div className="text-blue-700 dark:text-gray-200 text-center pt-2 text-sm md:text-md">
+					<div className="text-blue-700 dark:text-blue-200 text-center pt-2 text-sm md:text-md">
 						<Link href="/dailylife/login">have an account? Login</Link>
 					</div>
 				</div>

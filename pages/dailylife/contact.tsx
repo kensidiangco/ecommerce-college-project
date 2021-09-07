@@ -24,16 +24,16 @@ export default function Contact() {
             <Head>
                 <title>Contact</title>
             </Head>
-            <div className="container p-5 md:mx-10">
+            <div className="container mx-auto">
                     {!!success && 
-                        <p className="text-center text-green-600 dark:text-green-200 py-2 md:py-5">{success} <span className="text-red-500 cursor-pointer mx-5" onClick={() => removeMessage()}>x</span></p>
+                        <p className="text-center text-green-600 dark:text-green-200 mt-5">{success} <span className="text-red-500 cursor-pointer mx-5" onClick={() => removeMessage()}>x</span></p>
                     }
-                <div className="flex justify-center">
-                    <div className="md:w-1/3 p-4 md:px-10 md:py-5 shadow-lg bg-gray-200 dark:bg-gray-700 rounded-2xl">
-                        <h1 className="text-xl md:text-2xl font-semibold text-gray-700 dark:text-gray-50 py-3">
+                <div className="flex justify-center py-5">
+                    <div className="p-5 md:px-7 md:py-5 shadow-lg bg-gray-200 dark:bg-gray-700 rounded-2xl">
+                        <h1 className="text-xl md:text-2xl font-semibold py-2 text-gray-700 dark:text-gray-50">
                             Contact us!
                         </h1>
-                        <form autoComplete="off" className="flex flex-col gap-px md:gap-4 justify-center space-y-2 md:space-y-0" onSubmit={handleSubmit}>
+                        <form autoComplete="off" className="flex flex-col gap-2 mt-2" onSubmit={handleSubmit}>
                             <input 
                                 type="text" 
                                 placeholder="Your name..." 
@@ -50,6 +50,7 @@ export default function Contact() {
                                 required 
                             />
                             <textarea
+                                rows={5}
                                 placeholder="messages..."
                                 className="w-full p-3 md:p-4 dark:bg-gray-500 bg-gray-50 rounded-lg"
                                 value={message}    

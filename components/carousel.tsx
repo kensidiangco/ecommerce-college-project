@@ -37,16 +37,17 @@ export default function CarouselFeed(){
             >
             {images.slice(0, 5).map((image, idx) => {
                 return (
-                    <div key={idx} className="rounded">
+                    <div key={idx}>
                         <Image
+                            className="rounded-md"
                             draggable={false}
                             style={{ width: "90%", height: "90%" }}
                             src={image}
                             alt="tinda"
                         />
                         <div className="">
-                            <p>Sample item</p>    
-                            <p>2,989</p>    
+                            <p className="md:text-xl">Sample item</p>    
+                            <p>₱2,989</p>    
                         </div>
                     </div>
                 );

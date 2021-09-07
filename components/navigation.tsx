@@ -58,7 +58,7 @@ export default function Navigation() {
                             <li className="py-4 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition delay-50">
                                 <span className="relative inline-block cursor-pointer">    
                                     <Link href="/dailylife/cart" passHref>
-                                        <span className="text-lg">Cart</span>
+                                        <span className="text-lg dark:text-gray-50 text-gray-900">Cart</span>
                                     </Link>
                                     <span className="absolute bottom-2 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-3 bg-red-600 rounded-full">2</span>
                                 </span>
@@ -99,28 +99,28 @@ export default function Navigation() {
                                                 </span>
                                             </Disclosure.Button>
                                             <div className="flex flex-col gap-4 items-center">
-                                                <Disclosure.Button className="cursor-pointer py-1">
+                                                <Disclosure.Button className="dark:text-gray-50 text-gray-900 cursor-pointer py-1">
                                                     <Link href="#">Search</Link>
                                                 </Disclosure.Button>
-                                                <Disclosure.Button className="cursor-pointer py-1">
+                                                <Disclosure.Button className="dark:text-gray-50 text-gray-900 cursor-pointer py-1">
                                                     <Link href="#">Men</Link>
                                                 </Disclosure.Button>
-                                                <Disclosure.Button className="cursor-pointer py-1">
+                                                <Disclosure.Button className="dark:text-gray-50 text-gray-900 cursor-pointer py-1">
                                                     <Link href="#">Women</Link>
                                                 </Disclosure.Button>
-                                                <Disclosure.Button className="cursor-pointer py-1">
+                                                <Disclosure.Button className="dark:text-gray-50 text-gray-900 cursor-pointer py-1">
                                                     <Link href="#">Unisex</Link>
                                                 </Disclosure.Button>
                                             </div>
                                             <div className="flex md:gap-2 py-2">
-                                                <Disclosure.Button className="cursor-pointer m-2">
+                                                <Disclosure.Button className="dark:text-gray-50 text-gray-900 cursor-pointer m-2">
                                                     <Link href="/dailylife/login">Login</Link>
                                                 </Disclosure.Button>
-                                                <Disclosure.Button className="cursor-pointer m-2">
+                                                <Disclosure.Button className="dark:text-gray-50 text-gray-900 cursor-pointer m-2">
                                                     <Link href="/dailylife/signup">Signup</Link>
                                                 </Disclosure.Button>
                                             </div>
-                                            <Disclosure.Button as="span" className="dark:text-gray-50 text-black py-4">
+                                            <Disclosure.Button as="span" className="dark:text-gray-50 text-gray-900 py-4">
                                                 <Link href="/dailylife/aboutus">
                                                     About us
                                                 </Link>

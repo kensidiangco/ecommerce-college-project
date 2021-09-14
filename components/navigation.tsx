@@ -1,6 +1,7 @@
 import Link from "next/link"
 import {useTheme} from 'next-themes'
 import { Disclosure, Transition } from '@headlessui/react'
+import { ListContent } from "semantic-ui-react"
 
 export default function Navigation() {
     const {theme, setTheme} = useTheme()
@@ -55,13 +56,11 @@ export default function Navigation() {
                             </ul>
                         </div>
                         <ul className="hidden md:flex items-center space-x-3">
-                            <li className="py-4 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50">
-                                <span className="relative inline-block cursor-pointer">    
-                                    <Link href="/dailylife/cart" passHref>
-                                        <span className="text-lg dark:text-gray-50 text-gray-900">Cart</span>
-                                    </Link>
-                                    <span className="absolute bottom-2 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-3 bg-red-600 rounded-full">2</span>
-                                </span>
+                            <li className="relative inline-block cursor-pointer">    
+                                <Link href="/dailylife/cart" passHref>
+                                    <span className="py-4 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50 text-lg dark:text-gray-50 text-gray-900">Cart</span>
+                                </Link>
+                                <span className="absolute bottom-2 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-3 bg-red-600 rounded-full">2</span>
                             </li>
                         </ul>
                         <Disclosure as="div" className="md:hidden flex items-center">

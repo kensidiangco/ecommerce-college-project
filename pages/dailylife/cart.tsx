@@ -42,9 +42,9 @@ export default function Cart() {
 						</div>
 						<div className="py-5 px-3 md:p-3 flex flex-col md:flex-row items-center md:bg-none dark:bg-dark-card bg-gray-50 rounded-xl shadow-md md:shadow-none justify-around space-y-4 md:space-y-0">
 							<p className="text-2xl text-blue-700 dark:text-blue-400 transition delay-50">Total: ₱2,798</p>
-							<div className="p-3 bg-blue-500 text-gray-50 dark:bg-dark-button dark:hover:bg-button-hover rounded-md hover:bg-blue-400 transition delay-50 cursor-pointer">
-								<Link href="/dailylife/checkout">Proceed to checkout</Link>
-							</div>
+							<Link href="/dailylife/checkout" passHref>
+								<p className="p-3 bg-blue-500 text-gray-50 dark:bg-dark-button dark:hover:bg-button-hover rounded-md hover:bg-blue-400 transition delay-50 cursor-pointer">Proceed to checkout</p>
+							</Link>
 						</div>
 					</div>
 					<div className="mt-4 md:mt-px dark:bg-dark-card shadow-md xl:shadow-xl bg-gray-50 rounded-xl p-2 md:p-4">
@@ -95,7 +95,7 @@ export default function Cart() {
 
 
 						<div className="flex justify-center">
-							<input type="submit" value="See more..." className="px-10 py-1 text-gray-800 dark:text-gray-500 dark:bg-dark-card bg-gray-50 cursor-pointer md:hover:bg-gray-100 dark:hover:bg-gray-900 transition delay-50 rounded-md" />
+							<input type="submit" value="See more..." className="px-10 py-1 text-blue-700 dark:text-blue-400 dark:bg-dark-card bg-gray-50 cursor-pointer dark:hover:bg-button-hover focus:bg-gray-100 transition delay-50 rounded-md" />
 						</div>
 					</div>
 				</div>

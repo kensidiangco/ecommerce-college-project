@@ -30,7 +30,7 @@ export default function Login() {
 							className="p-2 md:p-3 dark:bg-dark-input bg-gray-50 rounded-lg placeholder-dark-placeholder" required />
 						<input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}
 							className="p-2 md:p-3 dark:bg-dark-input bg-gray-50 rounded-lg placeholder-dark-placeholder" required />
-						<input type="submit" value="Login" className="p-2 md:p-3 mt-px bg-blue-500 text-gray-50 dark:bg-dark-button dark:hover:bg-button-hover rounded-md hover:bg-blue-400 transition delay-100 cursor-pointer" />
+						<input type="submit" value="Login" className="p-2 md:p-3 mt-px bg-blue-500 text-gray-50 dark:bg-dark-button dark:hover:bg-button-hover rounded-md hover:bg-blue-400 transition delay-50 cursor-pointer" />
 					</form>
 					<div className="text-blue-700 dark:text-blue-500 text-center pt-2 text-sm md:text-md">
 						<Link href="/dailylife/signup">Doesn&apos;t have an account? Signup</Link>

@@ -16,7 +16,7 @@ export default function Checkout() {
 			</Head>
 			<div className="container mx-auto">
 				<div className="flex flex-col-reverse md:flex-row justify-center p-4 md:px-5 md:py-10 md:gap-10 gap-5">
-					<form onSubmit={onSubmit} className="flex flex-col gap-2 p-5 rounded-xl bg-gray-100 dark:bg-dark-card text-gray-800 dark:text-gray-50" autoComplete="off">
+					<form onSubmit={onSubmit} className="flex flex-col gap-2 p-5 rounded-xl shadow-md bg-gray-200 dark:bg-dark-card text-gray-800 dark:text-gray-50" autoComplete="off">
 						<h2 className="text-xl font-semibold">Information</h2>
 						<input type="email" name="email" placeholder="Email" className="p-2 rounded-md" required/>
 
@@ -39,7 +39,7 @@ export default function Checkout() {
 						<input type="submit" value="Place order" className="p-3 mt-2 bg-blue-500 text-gray-50 dark:bg-dark-button dark:hover:bg-button-hover rounded-md hover:bg-blue-400 transition delay-100 cursor-pointer"/>
 					</form>
 					<div className="justify-center md:px-5 md:py-10">
-						<div className="flex flex-col gap-2 p-5 rounded-xl bg-gray-100 dark:bg-dark-card text-gray-800 dark:text-gray-50">
+						<div className="flex flex-col gap-2 p-5 rounded-xl bg-gray-50 shadow-md dark:bg-dark-card text-gray-800 dark:text-gray-50">
 							<p className="text-xl font-semibold">Order summary</p>
 							<div className="flex flex-row gap-2 md:gap-4 items-center">
 								<Image src={"/fourth.png"} width={100} height={100} objectFit="contain" alt="Sample image"/>

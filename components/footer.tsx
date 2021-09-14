@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function Footer() {
     return(
-        <footer className="bg-gray-200 shadow-lg dark:bg-dark-nav-footer text-gray-700 dark:text-gray-50 transition delay-100">
+        <footer className="bg-gray-200 shadow-lg dark:bg-dark-nav-footer text-gray-700 dark:text-gray-50 transition delay-50">
             <div className="py-10 px-10 md:flex justify-center md:space-x-20 text-center grid gap-3">
                 <ul className="flex flex-col gap-2">
                     <h2 className="text-lg font-semibold hover:underline py-px">

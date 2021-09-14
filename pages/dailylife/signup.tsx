@@ -83,7 +83,7 @@ export default function Signup() {
 						<input 
 							type="submit" 
 							value="Signup" 
-							className="p-2 md:p-3 mt-px bg-blue-500 text-gray-50 dark:bg-dark-button dark:hover:bg-button-hover rounded-md hover:bg-blue-400 transition delay-100 cursor-pointer" 
+							className="p-2 md:p-3 mt-px bg-blue-500 text-gray-50 dark:bg-dark-button dark:hover:bg-button-hover rounded-md hover:bg-blue-400 transition delay-50 cursor-pointer" 
 						/>
 					</form>
 					<div className="text-blue-700 dark:text-blue-500 text-center pt-2 text-sm md:text-md">

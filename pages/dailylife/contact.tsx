@@ -57,7 +57,7 @@ export default function Contact() {
                                 onChange={(e) => setMessage(e.target.value)}
                                 required
                             />
-                            <input type="submit" value="Send" className="p-2 md:p-3 bg-blue-500 text-gray-50 dark:bg-dark-button dark:hover:bg-button-hover rounded-md hover:bg-indigo-500 transition delay-100 cursor-pointer"/>
+                            <input type="submit" value="Send" className="p-2 md:p-3 bg-blue-500 text-gray-50 dark:bg-dark-button dark:hover:bg-button-hover rounded-md hover:bg-indigo-500 transition delay-50 cursor-pointer"/>
                         </form>
                     </div>
                 </div>

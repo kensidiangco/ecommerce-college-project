@@ -7,7 +7,7 @@ export default function Navigation() {
     
     return(
         <>  
-            <nav className="bg-white sticky shadow-md top-0 z-50 dark:bg-dark-nav-footer dark:text-gray-50 text-gray-700 transition delay-100">
+            <nav className="bg-gray-50 sticky shadow-md top-0 z-50 dark:bg-dark-nav-footer dark:text-gray-50 text-gray-700 transition delay-100">
                 <ul className="float-left hidden md:flex items-center space-x-1 px-10 text-sm static mt-px">
                     <li className="py-2 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50 cursor-pointer">
                         <Link href="/dailylife/aboutus">About us</Link>
@@ -16,7 +16,7 @@ export default function Navigation() {
                         <input 
                             aria-label="Toggle Dark Mode"
                             type="submit"
-                            className="p-2 rounded-md order-2 md:order-3 cursor-pointer"
+                            className="p-2 rounded-md order-2 md:order-3 cursor-pointer bg-button-hover hover:bg-dark-button text-gray-50 dark:bg-gray-300 dark:hover:bg-gray-200 dark:text-gray-900 transition delay-100"
                             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                             value={theme === 'dark' ? 'Light' : 'Dark'}
                         />
@@ -26,7 +26,7 @@ export default function Navigation() {
                     <li className="py-2 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50 cursor-pointer">
                         <Link href="/dailylife/login">Login</Link>
                     </li>
-                    <li className="py-2 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50 cursor-pointer">
+                    <li className="py-2 px-2 rounded-md bg-blue-500 text-gray-50 hover:bg-blue-300 dark:hover:bg-blue-300 transition delay-50 cursor-pointer">
                         <Link href="/dailylife/signup">Signup</Link>
                     </li>
                 </ul>
@@ -113,10 +113,10 @@ export default function Navigation() {
                                                 </Disclosure.Button>
                                             </div>
                                             <div className="flex md:gap-2 py-2">
-                                                <Disclosure.Button className="dark:text-gray-50 text-gray-900 cursor-pointer m-2">
+                                                <Disclosure.Button className="py-2 px-1 dark:text-gray-50 text-gray-900 cursor-pointer m-2">
                                                     <Link href="/dailylife/login">Login</Link>
                                                 </Disclosure.Button>
-                                                <Disclosure.Button className="dark:text-gray-50 text-gray-900 cursor-pointer m-2">
+                                                <Disclosure.Button className="py-2 p-1 rounded-md bg-blue-500 text-gray-50 hover:bg-blue-300 dark:hover:bg-blue-300 transition delay-50 cursor-pointer m-2">
                                                     <Link href="/dailylife/signup">Signup</Link>
                                                 </Disclosure.Button>
                                             </div>
@@ -129,7 +129,7 @@ export default function Navigation() {
                                                 <input 
                                                     aria-label="Toggle Dark Mode"
                                                     type="submit"
-                                                    className="p-3 order-2 md:order-3 dark:bg-dark-button dar:hover:bg-button-hover" 
+                                                    className="p-1 px-10 rounded order-2 md:order-3 cursor-pointer bg-button-hover hover:bg-dark-button text-gray-50 dark:bg-gray-300 dark:hover:bg-gray-200 dark:text-gray-900 transition delay-100"
                                                     onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                                                     value={theme === 'dark' ? 'Light' : 'Dark'}
                                                 />

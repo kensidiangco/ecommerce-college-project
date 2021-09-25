@@ -4,7 +4,7 @@ import {useTheme} from 'next-themes'
 import { Disclosure, Transition } from '@headlessui/react'
 import { useSession } from "next-auth/client"
 import { signOut, signIn } from 'next-auth/client'
-import Dropdown from './dropdown'
+import Dropdown from '../components/dropdown'
 import SearchDropdown from '../components/searchDropdown'
 
 export default function Navigation() {

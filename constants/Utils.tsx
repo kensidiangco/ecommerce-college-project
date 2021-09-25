@@ -2,7 +2,6 @@ import jwt from "jsonwebtoken";
 
 export namespace JwtUtils {
   export const isJwtExpired = (token: string) => {
-    // offset by 60 seconds, so we will check if the token is "almost expired".
     const currentTime = Math.round(Date.now() / 1000 + 60);
     const decoded = jwt.decode(token);
 

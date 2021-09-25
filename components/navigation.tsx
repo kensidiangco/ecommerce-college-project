@@ -4,7 +4,7 @@ import {useTheme} from 'next-themes'
 import { Disclosure, Transition } from '@headlessui/react'
 import { useSession } from "next-auth/client"
 import { signOut, signIn } from 'next-auth/client'
-import Dropdown from '../components/dropdown'
+import LoginDropdown from '../components/dropdown'
 import SearchDropdown from '../components/searchDropdown'
 
 export default function Navigation() {
@@ -46,16 +46,16 @@ export default function Navigation() {
                         </span>                        
                     </Link>*/}
 
-                    <Dropdown />
+                    <LoginDropdown />
                     
                 </ul> 
-                <div className="max-w-6xl mx-auto pt-6 px-6 py-1">
+                <div className="max-w-6xl mx-auto md:pt-6 px-6 py-1">
                     <div className="flex justify-between">
                         <div className="flex space-x-7 items-center cursor-pointer">
 
                             <div>
                                 <Link href="/" passHref>
-                                    <span className="flex items-center py-4 px-2 font-semibold text-lg">Dailylife</span>
+                                    <span className="flex items-center py-4 px-2 font-semibold text-2xl">Dailylife</span>
                                 </Link>
                             </div>
                             <ul className="hidden md:flex items-center space-x-1">
@@ -106,7 +106,7 @@ export default function Navigation() {
                                         leaveFrom="opacity-100"
                                         leaveTo="opacity-0"
                                     >
-                                        <Disclosure.Panel className="bg-white flex flex-col gap-2 items-center absolute inset-x-0 top-2/3 w-full dark:bg-dark-nav-footer transition delay-150 py-10" static>
+                                        <Disclosure.Panel className="bg-gray-50 flex flex-col gap-2 items-center absolute inset-x-0 top-2/3 w-full dark:bg-dark-nav-footer transition delay-150 py-10" static>
                                             <Disclosure.Button as="span" className="dark:text-gray-50 text-black py-5">
                                                 <span className="relative inline-block cursor-pointer text-2xl">    
                                                     <Link href="/dailylife/cart">

@@ -49,7 +49,7 @@ export default function Navigation() {
                     <Dropdown />
                     
                 </ul> 
-                <div className="max-w-6xl mx-auto pt-6">
+                <div className="max-w-6xl mx-auto pt-6 px-6 py-1">
                     <div className="flex justify-between">
                         <div className="flex space-x-7 items-center cursor-pointer">
 

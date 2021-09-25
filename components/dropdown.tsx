@@ -32,7 +32,7 @@ export default function Dropdown() {
           <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-gray-50 hover:bg-gray-100 dark:bg-dark-button dark:hover:bg-button-hover divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10 transition delay-50">
             <div className="px-1 py-1">
               {!session && <>
-                <Menu.Item onClick={() => signIn('google', { callbackUrl: `${window.location.origin}/dailylife/cart` })}>
+                <Menu.Item onClick={() => signIn('google', { callbackUrl: `${window.location.origin}/` })}>
                   {({ active }) => (
                     <button
                       className={`${

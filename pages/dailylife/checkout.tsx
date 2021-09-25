@@ -1,9 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { withAuth } from '../../constants/HOCs'
+import { useSession } from "next-auth/client";
 
-export default function Checkout() {
+function Checkout() {
 	const router = useRouter()
+	const [session, loading] = useSession()
 
 	const onSubmit = () => {
 		router.push('/')
@@ -18,7 +21,7 @@ export default function Checkout() {
 				<div className="flex flex-col-reverse md:flex-row justify-center p-4 md:px-5 md:py-10 md:gap-10 gap-5">
 					<form onSubmit={onSubmit} className="flex flex-col gap-2 p-5 rounded-xl shadow-md bg-gray-200 dark:bg-dark-card text-gray-800 dark:text-gray-50" autoComplete="off">
 						<h2 className="text-xl font-semibold">Information</h2>
-						<input type="email" name="email" placeholder="Email" className="p-2 rounded-md" required/>
+						<input type="email" name="email" placeholder="Email" defaultValue={!loading? session.user?.email : ""} className="p-2 rounded-md" required/>
 
 						<h2 className="mt-2 text-xl font-semibold">Delivery address</h2>
 						<input type="text" name="name" placeholder="Full name" className="p-2 rounded-md" required/>
@@ -72,3 +75,5 @@ export default function Checkout() {
 		</>
 	)
 }
+
+export default withAuth(3 * 60)(Checkout);

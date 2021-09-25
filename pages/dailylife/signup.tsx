@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
+import { getSession } from 'next-auth/client'
 
 export default function Signup() {
 	const [username, setUsername] = useState('')
@@ -93,4 +94,21 @@ export default function Signup() {
 			</div>
 		</>
 	)
+}
+
+export async function getServerSideProps(context) {
+	const session = await getSession(context)
+
+	if (session) {
+		return {
+			redirect: {
+				destination: '/',
+				permanent: false,
+			},
+		}
+	}
+
+	return {
+		props: { session }
+	}
 }

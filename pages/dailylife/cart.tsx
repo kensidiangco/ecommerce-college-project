@@ -1,8 +1,12 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useSession } from 'next-auth/client'
+import CheckoutLoginDropdown from '../../components/checkoutLoginDropdown'
 
 export default function Cart() {
+	const [session] = useSession()
+
 	return(
 		<>
 			<Head>
@@ -42,9 +46,12 @@ export default function Cart() {
 						</div>
 						<div className="py-5 px-3 md:p-3 flex flex-col md:flex-row items-center md:bg-none dark:bg-dark-card bg-gray-50 rounded-xl shadow-md md:shadow-none justify-around space-y-4 md:space-y-0">
 							<p className="text-2xl text-blue-700 dark:text-blue-400 transition delay-50">Total: ₱2,798</p>
-							<Link href="/dailylife/checkout" passHref>
-								<p className="p-3 bg-blue-500 text-gray-50 dark:bg-dark-button dark:hover:bg-button-hover rounded-md hover:bg-blue-400 transition delay-50 cursor-pointer">Proceed to checkout</p>
-							</Link>
+							{!session && <CheckoutLoginDropdown />}
+							{session &&
+								<Link href="/dailylife/checkout" passHref>
+									<p className="p-3 md:p-2 md:px-4 bg-blue-500 text-gray-50 dark:bg-dark-button dark:hover:bg-button-hover rounded-md hover:bg-blue-400 transition delay-50 cursor-pointer">Proceed to checkout</p>
+								</Link>
+							}
 						</div>
 					</div>
 					<div className="mt-4 md:mt-px dark:bg-dark-card shadow-md xl:shadow-xl bg-gray-50 rounded-xl p-2 md:p-4">

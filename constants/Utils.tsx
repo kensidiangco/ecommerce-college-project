@@ -6,20 +6,20 @@ export namespace JwtUtils {
     const currentTime = Math.round(Date.now() / 1000 + 60);
     const decoded = jwt.decode(token);
 
-    if (decoded["exp"]) {
-      const adjustedExpiry = decoded["exp"];
-
-      if (adjustedExpiry < currentTime) {
-        console.log("Token expired");
-        return true;
+    try {
+      if (decoded["exp"]) {
+        const adjustedExpiry = decoded["exp"];
+  
+        if (adjustedExpiry < currentTime) {
+          return true;
+        }
+        return false;
       }
-
-      console.log("Token has not expired yet");
-      return false;
+    }
+    catch {
+      return true;
     }
 
-    console.log('Token["exp"] does not exist');
-    return true;
   };
 }
 

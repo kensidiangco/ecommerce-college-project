@@ -1,8 +1,18 @@
 import Head from 'next/head'
 import CategoryGallery from '../components/categoryGallery'
 import CarouselFeed from '../components/carousel'
+import ProductFeed from '../components/productFeed'
+import { useEffect } from 'react'
+import { useDispatch } from "react-redux";
+import { addProducts } from "../slices/cartSlice"
 
-function Home() {
+function Home({products}) {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(addProducts(products))
+  }, [products])
+
   return (
     <div>
       <Head>
@@ -14,6 +24,15 @@ function Home() {
       <CarouselFeed />
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const res = await fetch(`${process.env.BACKEND_API_BASE}/store/api/`)
+  const products = await res.json()
+
+  return {
+      props: { products },
+  }
 }
 
 export default Home;

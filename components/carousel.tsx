@@ -1,8 +1,14 @@
 import { Image } from "semantic-ui-react";
+import Link from 'next/link'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { selectProducts } from '../slices/cartSlice'
+import { useSelector } from 'react-redux'
+import NumberWithSpace from './currency'
 
 export default function CarouselFeed(){
+    const products = useSelector(selectProducts)
+    
     const responsive = {
         desktop: {
           breakpoint: { max: 3000, min: 1024 },
@@ -20,12 +26,7 @@ export default function CarouselFeed(){
           paritialVisibilityGutter: 30
         }
       };
-      const images = [
-          "/first.jpeg",
-          "/second.jpeg",
-          "/third.jpeg",
-          "/fourth.png",
-      ];
+
     return(
         <div className="container mx-auto md:px-20 md:py-20 px-10 py-10">
             <Carousel
@@ -35,22 +36,28 @@ export default function CarouselFeed(){
             itemClass="image-item"
             responsive={responsive}
             >
-            {images.slice(0, 5).map((image, idx) => {
+            {products.map((prod, idx) => {
                 return (
                     <div key={idx}>
-                        <Image
-                            className="rounded-md"
-                            draggable={false}
-                            style={{ width: "90%", height: "90%" }}
-                            src={image}
-                            alt="tinda"
-                        />
+                        <Link href={`/dailylife/product/${prod.slug}`} passHref>
+                            <span>
+                                <Image
+                                    className="rounded shadow cursor-pointer"
+                                    draggable={false}
+                                    style={{ width: "90%", height: "90%" }}
+                                    src={`https://res.cloudinary.com/dailylife-ecommerce/${prod.product_image[0].image}`}
+                                    alt="Dailylife" />
+                            </span>
+                        </Link>
                         <div className="">
-                            <p className="md:text-xl">Sample item</p>    
-                            <p>₱2,989</p>    
+                            <p>{prod.title}</p>
+                            <p>{prod.variations[0].variant[0].parent_variant === null ? 
+                                NumberWithSpace(parseInt(prod.variations[0].variant[0].price)) 
+                                : 
+                                NumberWithSpace(parseInt(prod.variations[0].variant[0].mainVariant[0].price))} </p>
                         </div>
                     </div>
-                );
+                )
             })}
             </Carousel>
         </div>

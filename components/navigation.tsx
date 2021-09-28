@@ -7,9 +7,24 @@ import { signOut, signIn } from 'next-auth/client'
 import LoginDropdown from '../components/dropdown'
 import SearchDropdown from '../components/searchDropdown'
 
+import { selectTotalItems, selectProducts } from "../slices/cartSlice"
+import { useSelector } from "react-redux"
+import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react'
+
+import Result from './result'
+import Search from './search'
+
 export default function Navigation() {
     const [session] = useSession()
     const {theme, setTheme} = useTheme()
+    const router = useRouter()
+    const totalItems = useSelector(selectTotalItems)
+    const products = useSelector(selectProducts)
+	
+    const [searchTerm, setSearchTerm] = useState('')
+    const [searchResults, setSearchResults] = useState([])
+    const [showResults, setShowResults] = useState(false)
 
     return(
         <>  
@@ -60,17 +75,23 @@ export default function Navigation() {
                             </div>
                             <ul className="hidden md:flex items-center space-x-1">
                                 <li>
-                                    <SearchDropdown CName="absolute right-0 w-56 mt-2 origin-top-right bg-gray-50 hover:bg-gray-100 dark:bg-dark-button dark:hover:bg-button-hover divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10 transition delay-50"/>
+                                    <SearchDropdown CName="absolute right-0 w-56 mt-2 origin-top-right bg-gray-50 dark:bg-dark-button divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10 transition delay-50"/>
                                 </li>
-                                <li className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50">
-                                    <Link href="#">Men</Link>
-                                </li>
-                                <li className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50">
-                                    <Link href="#">Women</Link>
-                                </li>
-                                <li className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50">
-                                    <Link href="#">Unisex</Link>
-                                </li>
+                                <Link href="/dailylife/category/men" passHref>
+                                    <li className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50">
+                                        Men
+                                    </li>
+                                </Link>
+                                <Link href="/dailylife/category/women" passHref>
+                                    <li className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50">
+                                        Women
+                                    </li>
+                                </Link>
+                                <Link href="/dailylife/category/unisex" passHref>
+                                    <li className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50">
+                                        Unisex
+                                    </li>
+                                </Link>
                             </ul>
                         </div>
                         <ul className="hidden md:flex items-center space-x-3">
@@ -78,7 +99,7 @@ export default function Navigation() {
                                 <Link href="/dailylife/cart" passHref>
                                     <span className="py-4 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-button-hover transition delay-50 text-lg dark:text-gray-50 text-gray-900">Cart</span>
                                 </Link>
-                                    <span className="absolute bottom-2 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-3 bg-red-600 rounded-full">2</span>
+                                    {totalItems !== 0 && <span className="absolute bottom-2 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-3 bg-red-600 rounded-full">{totalItems}</span>}
                             </li>
                         </ul>
                         <Disclosure as="div" className="md:hidden flex items-center">
@@ -112,7 +133,7 @@ export default function Navigation() {
                                                     <Link href="/dailylife/cart">
                                                         Cart
                                                     </Link>
-                                                    <span className="absolute bottom-2 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-4 bg-red-600 rounded-full">2</span>
+                                                    {totalItems !== 0 && <span className="absolute bottom-2 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-4 bg-red-600 rounded-full">{totalItems}</span>}
                                                 </span>
                                             </Disclosure.Button>
                                             <div className="flex flex-col gap-4 items-center">

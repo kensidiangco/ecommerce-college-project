@@ -11,11 +11,12 @@ export default function Category({ products }) {
 	return(
 		<>
 			<Head>
-				<title>{slug.toUpperCase()}</title>
+				<title>Products</title>
 			</Head>
             <div className="containter mx-auto py-10 px-20">
-                <p className="text-xl font-semibold ml-20">FOR {slug.toUpperCase()}</p>
-                <p className="text-xl font-semibold ml-20 text-center">{products.length < 1 && <>No products for {slug.toUpperCase()} :(</>}</p>
+                {/* <p className="text-xl font-semibold ml-20">FOR {(slug as string).toUpperCase}</p>*/}
+                <p className="text-xl font-semibold ml-20">{products.length > 0 && <>FOR YOU</>}</p>
+                <p className="text-xl font-semibold ml-20 text-center">{products.length < 1 && <>No products to show.</>}</p>
                 <div className="flex felx-wrap gap-10 justify-center">
                     {products.map((product, idx) => (
                         <div key={idx} className="bg-white dark:bg-dark-card p-4 rounded-xl shadow-md">

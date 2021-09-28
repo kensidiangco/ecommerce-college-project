@@ -1,10 +1,10 @@
-import { Image } from "semantic-ui-react";
+import { Image } from "semantic-ui-react"
 import Link from 'next/link'
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import { selectProducts } from '../slices/cartSlice'
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
 import { useSelector } from 'react-redux'
 import NumberWithSpace from './currency'
+import { selectProducts } from '../slices/cartSlice'
 
 export default function CarouselFeed(){
     const products = useSelector(selectProducts)

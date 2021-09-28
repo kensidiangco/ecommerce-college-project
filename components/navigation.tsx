@@ -137,17 +137,17 @@ export default function Navigation() {
                                                 </span>
                                             </Disclosure.Button>
                                             <div className="flex flex-col gap-4 items-center">
-                                                <span className="flex justify-center items-center dark:text-gray-50 text-gray-900 cursor-pointer py-1">
+                                                {/* <span className="flex justify-center items-center dark:text-gray-50 text-gray-900 cursor-pointer py-1">
                                                     <SearchDropdown CName="w-56 mt-2 origin-top-right bg-gray-50 hover:bg-gray-100 dark:bg-dark-button dark:hover:bg-button-hover divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10 transition delay-50 w-full"/>
-                                                </span>
+                                                </span> */}
                                                 <Disclosure.Button className="dark:text-gray-50 text-gray-900 cursor-pointer py-1">
-                                                    <Link href="#">Men</Link>
+                                                    <Link href="/dailylife/category/men">Men</Link>
                                                 </Disclosure.Button>
                                                 <Disclosure.Button className="dark:text-gray-50 text-gray-900 cursor-pointer py-1">
-                                                    <Link href="#">Women</Link>
+                                                    <Link href="/dailylife/category/women">Women</Link>
                                                 </Disclosure.Button>
                                                 <Disclosure.Button className="dark:text-gray-50 text-gray-900 cursor-pointer py-1">
-                                                    <Link href="#">Unisex</Link>
+                                                    <Link href="/dailylife/category/unisex">Unisex</Link>
                                                 </Disclosure.Button>
                                             </div>
                                             {!session &&

@@ -3,8 +3,16 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { withAuth } from '../../constants/HOCs'
 import { useSession } from "next-auth/client";
+import { useSelector } from 'react-redux'
+import { selectItems, selectTotal, selectTotalItems } from '../../slices/cartSlice';
+import NumberWithSpace from '../../components/currency';
+import CheckOutItem from '../../components/checkOutItem'
 
 function Checkout() {
+    const items = useSelector(selectItems)
+    const totalPrice = useSelector(selectTotal)
+    const selectTotalItem = useSelector(selectTotalItems)
+
 	const router = useRouter()
 	const [session, loading] = useSession()
 
@@ -44,29 +52,13 @@ function Checkout() {
 					<div className="justify-center md:px-5 md:py-10">
 						<div className="flex flex-col gap-2 p-5 rounded-xl bg-gray-50 shadow-md dark:bg-dark-card text-gray-800 dark:text-gray-50">
 							<p className="text-xl font-semibold">Order summary</p>
-							<div className="flex flex-row gap-2 md:gap-4 items-center">
-								<Image src={"/fourth.png"} width={100} height={100} objectFit="contain" alt="Sample image"/>
-								<div>
-									<p className="text-md font-semibold text-gray-700 dark:text-gray-50 transition delay-100">Sample item <span className="text-sm text-gray-500 dark:text-gray-400 transition delay-100">1pcs</span></p>
-									<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-100">Color: Wheat</p>
-									<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-100">Size: M</p>
-									<p className="text-md text-blue-700 dark:text-blue-400 transition delay-100">₱1,899</p>
-									<p className="text-sm md:py-2 text-yellow-700 dark:text-yellow-300 transition delay-100">Subtotal: ₱1,899</p>
-								</div>
-							</div>
 
-							<div className="flex flex-row gap-2 md:gap-4 items-center">
-								<Image src={"/first.jpeg"} width={100} height={100} objectFit="contain" alt="Sample image"/>
-								<div>
-									<p className="text-md font-semibold text-gray-700 dark:text-gray-50 transition delay-100">Sample item <span className="text-sm text-gray-500 dark:text-gray-400 transition delay-100">1pcs</span></p>
-									<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-100">Color: Wheat</p>
-									<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-100">Size: M</p>
-									<p className="text-md text-blue-700 dark:text-blue-400 transition delay-100">₱1,899</p>
-									<p className="text-sm md:py-2 text-yellow-700 dark:text-yellow-300 transition delay-100">Subtotal: ₱1,899</p>
-								</div>
-							</div>
+							{items?.map((item, idx) =>(
+								<CheckOutItem key={idx} {...item}/>
+							))}
+
 							<div>
-								<p className="text-xl md:text-2xl text-center text-yellow-700 dark:text-yellow-300 transition delay-100">TOTAL: ₱3,798</p>
+								<p className="text-xl md:text-2xl text-center text-yellow-600 dark:text-yellow-300 transition delay-100">TOTAL: {NumberWithSpace(totalPrice)}</p>
 							</div>
 						</div>
 					</div>

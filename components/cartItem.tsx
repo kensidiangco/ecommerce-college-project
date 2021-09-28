@@ -22,7 +22,7 @@ export default function CartItem({ id, title, price, quantity, product_image, de
     return (
         <div className="px-2 py-4 md:p-5 flex flex-col md:flex-row items-center md:gap-4 md:bg-none dark:bg-dark-card bg-gray-50 rounded-xl shadow-md md:shadow-none">
             <Image 
-                src={`https://res.cloudinary.com/dailylife-ecommerce/${product_image[0].image}`} 
+                src={`${process.env.IMAGE_BASE}/${product_image[0].image}`} 
                 width={200} height={200} objectFit="contain" alt="Sample image"
                 className="rounded-md cursor-pointer"
                 onClick={() => router.push(`/dailylife/product/${slug}`)}/>

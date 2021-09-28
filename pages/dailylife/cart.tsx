@@ -5,7 +5,6 @@ import { useSession } from 'next-auth/client'
 import CheckoutLoginDropdown from '../../components/checkoutLoginDropdown'
 import { useSelector } from "react-redux"
 import { selectItems, selectTotal, selectTotalItems } from "../../slices/cartSlice"
-import { useEffect, useState } from "react"
 import NumberWithSpace from '../../components/currency'
 import CartItem from '../../components/cartItem'
 

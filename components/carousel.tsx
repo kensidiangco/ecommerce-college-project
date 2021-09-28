@@ -36,7 +36,7 @@ export default function CarouselFeed(){
             itemClass="image-item"
             responsive={responsive}
             >
-            {products.map((prod, idx) => {
+            {products?.map((prod, idx) => {
                 return (
                     <div key={idx}>
                         <Link href={`/dailylife/product/${prod.slug}`} passHref>

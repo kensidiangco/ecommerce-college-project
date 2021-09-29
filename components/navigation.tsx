@@ -143,7 +143,7 @@ export default function Navigation() {
                                                 <div className="flex md:gap-2 py-2" onClick={() => signIn('google', { callbackUrl: `${window.location.origin}/` })}>
                                                     <Disclosure.Button className="py-px px-5 rounded-md bg-gray-100 text-gray-600 dark:text-gray-50 hover:bg-gray-200 dark:bg-dark-button dark:hover:bg-button-hover transition delay-50 cursor-pointer m-2">
                                                         <span className="flex items-center flex-row gap-1 font-semibold">
-                                                            <Image src="/googleLogo.png" width={40} height={40} objectFit='contain' loading="eager" />
+                                                            <Image alt="Google" src="/googleLogo.png" width={40} height={40} objectFit='contain' loading="eager" />
                                                             <p className="text-sm">Login with Google</p>
                                                         </span>
                                                     </Disclosure.Button>

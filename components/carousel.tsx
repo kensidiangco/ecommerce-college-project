@@ -46,7 +46,7 @@ export default function CarouselFeed(){
                                         draggable={false}
                                         style={{ width: "90%", height: "90%" }}
                                         src={`https://res.cloudinary.com/dailylife-ecommerce/${prod.product_image[0].image}`}
-                                        alt={prod.title} />
+                                        alt="Dailylife" />
                                 </span>
                             </Link>
                             <div className="flex flex-col gap-px ">

@@ -55,8 +55,8 @@ export default function Cart() {
 										<p className="text-sm md:text-md font-semibold text-gray-700 dark:text-gray-50 transition delay-50 break-words">{product.title}
 										</p>
 										<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50 flex gap-2">
-											{product.variations[0]?.variant.map((vBody) => (
-												<p>{vBody.variant_name}</p>
+											{product.variations[0]?.variant.map((vBody, idx) => (
+												<p key={idx}>{vBody.variant_name}</p>
 											))}
 										</p>
 										<p className="text-sm text-blue-700 dark:text-blue-400 transition delay-50">

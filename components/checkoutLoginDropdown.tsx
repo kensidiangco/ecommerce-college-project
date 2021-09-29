@@ -40,7 +40,7 @@ export default function CheckoutLoginDropdown() {
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                     >
                       <span className="flex items-center gap-2 justify-center text-center">
-                        <Image src="/googleLogo.png" width={30} height={30} objectFit="contain" loading="eager"/>
+                        <Image alt="Google" src="/googleLogo.png" width={30} height={30} objectFit="contain" loading="eager"/>
                         Login with Google
                       </span>
                     </button>

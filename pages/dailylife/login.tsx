@@ -44,7 +44,7 @@ export default function Login() {
 					<div className="mt-2">
 						<div className="py-1 px-5 rounded-md bg-gray-100 text-gray-700 dark:text-gray-50 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 transition delay-50 cursor-pointer m-2" onClick={() => signIn()}>
 							<span className="flex items-center font-semibold gap-1">
-								<Image src="/googleLogo.png" width={40} height={40} objectFit='contain' loading="eager" />
+								<Image src="/googleLogo.png" width={40} height={40} objectFit='contain' loading="eager" alt="Google"/>
 								<p className="text-sm">Login with Google</p>
 							</span>
 						</div> 

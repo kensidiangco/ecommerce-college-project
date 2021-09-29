@@ -41,7 +41,7 @@ export default function LoginDropdown() {
                       } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                     >
                       <span className="flex items-center gap-2 justify-center text-center">
-                        <Image src="/googleLogo.png" width={30} height={30} objectFit="contain"/>
+                        <Image alt="Google" src="/googleLogo.png" width={30} height={30} objectFit="contain"/>
                         Login with Google
                       </span>
                     </button>

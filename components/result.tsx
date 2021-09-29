@@ -14,6 +14,7 @@ export default function Result({ title, price, category, slug, image }) {
 				height={50}
 				objectFit="contain"
 				className="cursor-pointer rounded"
+				alt="Dailylife"
 			/>
 			<div onClick={() => router.push(`/dailylife/product/${slug}`)}>
 				<h5>{title}</h5>

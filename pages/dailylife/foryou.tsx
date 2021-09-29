@@ -31,8 +31,8 @@ export default function ForYou() {
                             <div className="flex flex-col gap-1">
                                 <h2 className="text-xl break-words font-semibold">{product.title}</h2>
                                 <p className="flex gap-2">
-                                    {product.variations[0]?.variant.map((vBody) => (
-                                        <p>{vBody.variant_name}</p>
+                                    {product.variations[0]?.variant.map((vBody, idx) => (
+                                        <p key={idx}>{vBody.variant_name}</p>
                                     ))}
                                 </p>
                                 <p className="text-yellow-600 dark:text-yellow-400 text-md">

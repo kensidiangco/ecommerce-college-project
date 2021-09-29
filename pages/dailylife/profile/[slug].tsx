@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import Image alt="dailylife" from 'next/image'
 import { useState } from 'react'
 
 export default function User(){
@@ -33,7 +33,7 @@ export default function User(){
                             {tab === 'Orders' &&
                                 <div className="dark:bg-dark-card flex flex-col gap-4 p-4 bg-gray-100 rounded-md transition delay-50">
                                     <div className="flex items-center gap-2">
-                                        <Image src='/third.jpeg' height={110} width={110} objectFit='contain' className="cursor-pointer rounded-md"/>
+                                        <Image alt="dailylife" src='/third.jpeg' height={110} width={110} objectFit='contain' className="cursor-pointer rounded-md"/>
                                         <div>
                                             <p className="text-xl text-gray-700 dark:text-gray-50 transition delay-50">Sample shirt <span className="text-sm text-gray-800 dark:text-gray-400 transition delay-50">2pcs</span></p>
                                             <p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50">Color: wheat</p>
@@ -44,7 +44,7 @@ export default function User(){
                                     </div>
 
                                     <div className="flex items-center gap-2">
-                                        <Image src='/second.jpeg' height={110} width={110} objectFit='contain' className="cursor-pointer rounded-md"/>
+                                        <Image alt="dailylife" src='/second.jpeg' height={110} width={110} objectFit='contain' className="cursor-pointer rounded-md"/>
                                         <div>
                                             <p className="text-xl text-gray-700 dark:text-gray-50 transition delay-50">Sample shirt <span className="text-sm text-gray-800 dark:text-gray-400 transition delay-50"></span></p>
                                             <p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50">Color: wheat</p>
@@ -58,7 +58,7 @@ export default function User(){
                             {tab === 'To Pay' &&
                                 <div className="dark:bg-dark-card flex flex-col gap-4 p-4 bg-gray-100 rounded-md transition delay-50">
                                     <div className="flex items-center gap-2">
-                                        <Image src='/third.jpeg' height={110} width={110} objectFit='contain' className="cursor-pointer rounded-md"/>
+                                        <Image alt="dailylife" src='/third.jpeg' height={110} width={110} objectFit='contain' className="cursor-pointer rounded-md"/>
                                         <div>
                                             <p className="text-xl text-gray-700 dark:text-gray-50 transition delay-50">Sample shirt <span className="text-sm text-gray-800 dark:text-gray-400 transition delay-50">2pcs</span></p>
                                             <p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50">Color: wheat</p>
@@ -69,7 +69,7 @@ export default function User(){
                                     </div>
 
                                     <div className="flex items-center gap-2">
-                                        <Image src='/second.jpeg' height={110} width={110} objectFit='contain' className="cursor-pointer rounded-md"/>
+                                        <Image alt="dailylife" src='/second.jpeg' height={110} width={110} objectFit='contain' className="cursor-pointer rounded-md"/>
                                         <div>
                                             <p className="text-xl text-gray-700 dark:text-gray-50 transition delay-50">Sample shirt <span className="text-sm text-gray-800 dark:text-gray-400 transition delay-50"></span></p>
                                             <p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50">Color: wheat</p>
@@ -86,7 +86,7 @@ export default function User(){
                             {tab === 'To Ship' &&
                                 <div className="dark:bg-dark-card flex flex-col gap-4 p-4 bg-gray-100 rounded-md transition delay-50">
                                     <div className="flex items-center gap-2">
-                                        <Image src='/third.jpeg' height={110} width={110} objectFit='contain' className="cursor-pointer rounded-md"/>
+                                        <Image alt="dailylife" src='/third.jpeg' height={110} width={110} objectFit='contain' className="cursor-pointer rounded-md"/>
                                         <div>
                                             <p className="text-xl text-gray-700 dark:text-gray-50 transition delay-50">Sample shirt <span className="text-sm text-gray-800 dark:text-gray-400 transition delay-50">2pcs</span></p>
                                             <p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50">Color: wheat</p>
@@ -105,7 +105,7 @@ export default function User(){
                             {tab === 'Completed' &&
                                 <div className="dark:bg-dark-card flex flex-col gap-4 p-4 bg-gray-100 rounded-md transition delay-50">
                                      <div className="flex items-center gap-2">
-                                        <Image src='/fourth.png' height={110} width={110} objectFit='contain' className="cursor-pointer rounded-md"/>
+                                        <Image alt="dailylife" src='/fourth.png' height={110} width={110} objectFit='contain' className="cursor-pointer rounded-md"/>
                                         <div>
                                             <p className="text-xl text-gray-700 dark:text-gray-50 transition delay-50">Sample shirt <span className="text-sm text-gray-800 dark:text-gray-400 transition delay-50"></span></p>
                                             <p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50">Color: wheat</p>

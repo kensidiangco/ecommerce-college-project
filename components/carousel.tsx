@@ -52,8 +52,8 @@ export default function CarouselFeed(){
                             <div className="flex flex-col gap-px ">
                                 <p className="font-semibold" >{prod.title}</p>
                                 <p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50 flex gap-2">
-                                    {prod.variations[0]?.variant.map((vBody) => (
-                                        <p>{vBody.variant_name}</p>
+                                    {prod.variations[0]?.variant.map((vBody, idx) => (
+                                        <p key={idx}>{vBody.variant_name}</p>
                                     ))}
                                 </p>
                                 <p className="text-blue-600 dark:text-yellow-400">{prod.variations[0].variant[0].parent_variant === null ? 

@@ -1,18 +1,15 @@
 import Image from 'next/image'
-import Link from 'next/link';
 import { removeFromCart } from "../slices/cartSlice";
 import { useDispatch } from "react-redux";
 import NumberWithSpace from './currency';
-import { useSession } from 'next-auth/client'
 import { useRouter } from 'next/router';
-import CheckoutLoginDropdown from './checkoutLoginDropdown';
 
 export default function CartItem({ id, title, price, quantity, image, description, variation, slug }) {
-	const [session] = useSession()
     const router = useRouter()
     const dispatch = useDispatch()
+
 	const removeItemFromCart = () => {
-		dispatch(removeFromCart({ id }))
+		dispatch(removeFromCart({ slug }))
 	}
 
 	const variations = Array.isArray(variation) && variation.length ? variation[0] : {};
@@ -29,6 +26,7 @@ export default function CartItem({ id, title, price, quantity, image, descriptio
                 alt={title}
                 
             />
+
             <div>
                 <p className="text-xl font-semibold text-gray-700 dark:text-gray-50 transition delay-50">{title}</p>
                 <p className="text-md text-gray-700 dark:text-gray-50 transition delay-50">
@@ -44,7 +42,10 @@ export default function CartItem({ id, title, price, quantity, image, descriptio
                 <p className="text-md text-blue-700 dark:text-blue-400 transition delay-50">{NumberWithSpace(price)} <span className="text-sm text-gray-500 dark:text-gray-400 transition delay-50">{quantity > 1 ? <>{quantity}pcs</> : <>{quantity}pc</>}</span></p>
                 <p className="text-sm md:py-3 text-yellow-700 dark:text-yellow-300 transition delay-50">Subtotal: ₱1,899</p>
                 <div className="flex justify-center mt-2 md:float-right">
-                    <input type="submit" value="Remove" className="text-sm py-1 px-10 cursor-pointer rounded-lg text-gray-700 dark:text-gray-50 dark:bg-dark-button dark:hover:bg-button-hover transition delay-50" onClick={() => removeItemFromCart()}/>
+                    <button 
+                    className="text-sm py-1 px-10 cursor-pointer rounded-lg text-gray-700 dark:text-gray-50 dark:bg-dark-button dark:hover:bg-button-hover transition delay-50" onClick={removeItemFromCart}>
+                        Remove
+                    </button>
                 </div>
             </div>
         </div>

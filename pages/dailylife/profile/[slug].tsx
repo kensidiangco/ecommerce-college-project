@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Image alt="dailylife" from 'next/image'
+import Image from 'next/image'
 import { useState } from 'react'
 
 export default function User(){

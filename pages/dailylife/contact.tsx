@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Head from 'next/head'
+import axios from 'axios'
 
 export default function Contact() {
     const [name, setName] = useState('')
@@ -10,12 +11,21 @@ export default function Contact() {
     const handleSubmit = (event) => {
         event.preventDefault()
 
-        setName('')
-        setEmail('')
-        setMessage('')
-
-        setSuccess('Email sent!')
+        axios.post(`${process.env.BACKEND_API_BASE}/store/api/contact/`, {
+            name: name,
+            sender: email,
+            message: message
+        })
+        .then(res => {
+            console.log(res)
+            setName('')
+            setEmail('')
+            setMessage('')
+            setSuccess('Email sent!')
+            })
+            .catch(err => console.log(err))
     }
+
     const removeMessage = () => {
         setSuccess('')
     }

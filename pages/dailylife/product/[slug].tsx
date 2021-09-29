@@ -78,7 +78,6 @@ export default function Product({ product }) {
 				axios.get(`${process.env.BACKEND_API_BASE}/store/api/variant/parent/${value}/`)
 					.then(res => {
 						setImage(res.data.attachment)
-						console.log(res.data)
 					})
 			})
 	}

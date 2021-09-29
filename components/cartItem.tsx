@@ -3,10 +3,12 @@ import { removeFromCart } from "../slices/cartSlice";
 import { useDispatch } from "react-redux";
 import NumberWithSpace from './currency';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
-export default function CartItem({ id, title, price, quantity, image, description, variation, slug }) {
+export default function CartItem({ title, price, quantity, image, product_image, description, variation, slug }) {
     const router = useRouter()
     const dispatch = useDispatch()
+    const [photo, setPhoto] = useState('')
 
 	const removeItemFromCart = () => {
 		dispatch(removeFromCart({ slug }))
@@ -15,11 +17,19 @@ export default function CartItem({ id, title, price, quantity, image, descriptio
 	const variations = Array.isArray(variation) && variation.length ? variation[0] : {};
 	const headers = Object.keys(variations)
 	const body = Object.values(variations)
-    
+
+    useEffect(() => {
+        if(image){
+            setPhoto(`${image}`)
+        }else{
+            setPhoto(`${product_image[0].image}`)
+        }
+    }, [])
+
     return (
         <div className="px-2 py-4 md:p-5 flex flex-col md:flex-row items-center md:gap-4 md:bg-none dark:bg-dark-card bg-gray-50 rounded-xl shadow-md md:shadow-none">
             <Image 
-                src={`${process.env.IMAGE_BASE}/${image}`} 
+                src={`${process.env.IMAGE_BASE}/${photo}`} 
                 width={200} height={200} objectFit="contain"
                 className="rounded-md cursor-pointer"
                 onClick={() => router.push(`/dailylife/product/${slug}`)}

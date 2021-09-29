@@ -1,26 +1,24 @@
 import Image from 'next/image'
-import Link from 'next/link';
-import { removeFromCart } from "../slices/cartSlice";
-import { useDispatch } from "react-redux";
 import NumberWithSpace from './currency';
-import { useSession } from 'next-auth/client'
-import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
-import { selectTotal, selectTotalItems } from '../slices/cartSlice';
+import { useState, useEffect } from 'react';
 
-export default function CheckOutItem({ id, title, price, quantity, image, variation, slug }) {
-	const [session] = useSession()
-    const router = useRouter()
-
-    const totalPrice = useSelector(selectTotal)
-    const selectTotalItem = useSelector(selectTotalItems)
+export default function CheckOutItem({ id, title, price, quantity, product_image, image, variation, slug }) {
+    const [photo, setPhoto] = useState('')
 	const variations = Array.isArray(variation) && variation.length ? variation[0] : {};
 	const headers = Object.keys(variations)
 	const body = Object.values(variations)
+
+    useEffect(() => {
+        if(image){
+            setPhoto(`${image}`)
+        }else{
+            setPhoto(`${product_image[0].image}`)
+        }
+    }, [])
     
     return (
         <div className="flex flex-row gap-2 md:gap-4 items-center">
-            <Image src={`${process.env.IMAGE_BASE}/${image}`} width={130} height={130} objectFit="contain" alt={title}/>
+            <Image src={`${process.env.IMAGE_BASE}/${photo}`} width={130} height={130} objectFit="contain" alt={title}/>
             <div className="flex flex-col gap-px">
                 <p className="text-md font-semibold text-gray-600 dark:text-gray-50 transition delay-100">{title}</p>
                 <p className="text-sm text-gray-700 dark:text-gray-50 transition delay-100">

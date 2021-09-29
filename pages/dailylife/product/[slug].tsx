@@ -66,6 +66,7 @@ export default function Product({ product }) {
 			...prevState,
 			[name]:value,
 		}))
+
 		axios.get(`${process.env.BACKEND_API_BASE}/store/api/variant/${value}/`)
 			.then(res => {
 				setPrice(parseInt(res.data.price))
@@ -74,12 +75,13 @@ export default function Product({ product }) {
 					[res.data.variation.name]: res.data.variant_name,
 				}))
 			})
-			.catch(err => {
-				axios.get(`${process.env.BACKEND_API_BASE}/store/api/variant/parent/${value}/`)
-					.then(res => {
-						setImage(res.data.attachment)
-					})
+			.catch(err => console.log(err))
+
+		axios.get(`${process.env.BACKEND_API_BASE}/store/api/variant/parent/${value}/`)
+			.then(res => {
+				setImage(res.data.attachment)
 			})
+			.catch(err => console.log(err))
 	}
 
 

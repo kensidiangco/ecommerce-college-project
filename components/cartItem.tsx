@@ -7,7 +7,7 @@ import { useSession } from 'next-auth/client'
 import { useRouter } from 'next/router';
 import CheckoutLoginDropdown from './checkoutLoginDropdown';
 
-export default function CartItem({ id, title, price, quantity, product_image, description, variation, slug }) {
+export default function CartItem({ id, title, price, quantity, image, description, variation, slug }) {
 	const [session] = useSession()
     const router = useRouter()
     const dispatch = useDispatch()
@@ -22,10 +22,13 @@ export default function CartItem({ id, title, price, quantity, product_image, de
     return (
         <div className="px-2 py-4 md:p-5 flex flex-col md:flex-row items-center md:gap-4 md:bg-none dark:bg-dark-card bg-gray-50 rounded-xl shadow-md md:shadow-none">
             <Image 
-                src={`${process.env.IMAGE_BASE}/${product_image[0].image}`} 
-                width={200} height={200} objectFit="contain" alt="Sample image"
+                src={`${process.env.IMAGE_BASE}/${image}`} 
+                width={200} height={200} objectFit="contain"
                 className="rounded-md cursor-pointer"
-                onClick={() => router.push(`/dailylife/product/${slug}`)}/>
+                onClick={() => router.push(`/dailylife/product/${slug}`)}
+                alt={title}
+                
+            />
             <div>
                 <p className="text-xl font-semibold text-gray-700 dark:text-gray-50 transition delay-50">{title}</p>
                 <p className="text-md text-gray-700 dark:text-gray-50 transition delay-50">

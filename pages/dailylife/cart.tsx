@@ -4,23 +4,23 @@ import Image from 'next/image'
 import { useSession } from 'next-auth/client'
 import CheckoutLoginDropdown from '../../components/checkoutLoginDropdown'
 import { useSelector } from "react-redux"
-import { selectItems, selectTotal, selectTotalItems } from "../../slices/cartSlice"
+import { selectItems, selectProducts, selectTotal } from "../../slices/cartSlice"
 import NumberWithSpace from '../../components/currency'
 import CartItem from '../../components/cartItem'
 
 export default function Cart() {
 	const [session] = useSession()
 
+    const products = useSelector(selectProducts)
     const items = useSelector(selectItems)
     const totalPrice = useSelector(selectTotal)
-    const selectTotalItem = useSelector(selectTotalItems)
 
 	return(
 		<>
 			<Head>
 				<title>Cart</title>
 			</Head>
-			<div className="container mx-auto flex flex-col gap-4 py-10 px-5">
+			<div className="container mx-auto flex flex-col gap-4 py-4 md:py-10 px-5">
 				<div className="flex flex-col md:flex-row justify-center gap-2 md:gap-5 xl:gap-10">
 					{items.length < 1 && <p className="text-xl">Empty cart :(</p>}
 					{items.length > 0 && <div className="grid gap-4 md:gap-px md:dark:bg-dark-card md:bg-gray-50 md:shadow-md  rounded-md md:rounded-xl p-2 md:p-4">
@@ -44,78 +44,41 @@ export default function Cart() {
 					<div className="md:w-10/12 mt-4 md:mt-px dark:bg-dark-card shadow-md bg-gray-50 rounded-xl p-2 md:p-4">
 						<p className="text-xl md:text-2xl font-semibold p-2 text-gray-700 dark:text-gray-50 transition delay-50">Recommendation</p>
 						<div className="md:flex md:flex-wrap justify-center">
-							<div className="p-2 md:p-5 flex flex-row items-center gap-4">
-								<Image src={"/first.jpeg"} width={130} height={130} objectFit="contain" alt="Sample image" className="rounded"/>
-								<div className="flex flex-col justify-center gap-px">
-									<p className="text-md font-semibold text-gray-700 dark:text-gray-50 transition delay-50">Sample item 
-									</p>
-									<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50">Color: Wheat</p>
-									<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50">Size: S,M,L</p>
-									<p className="text-sm text-blue-700 dark:text-blue-400 transition delay-50">₱1,899</p>
+							
+							{products?.map((product, idx) => (
+								<div key={idx} className="p-2 md:p-5 flex flex-row items-center gap-2 md:gap-4 hover:bg-gray-200 dark:hover:bg-button-hover rounded-md transition delay-50">
+									<Link href={`/dailylife/product/${product.slug}`} passHref>
+										<Image src={`${process.env.IMAGE_BASE}/${product.product_image[0].image}`} width={130} height={130} objectFit="contain" alt={product.title} className="cursor-pointer rounded"/>
+									</Link>
+									
+									<div className="flex flex-col justify-center gap-px">
+										<p className="text-sm md:text-md font-semibold text-gray-700 dark:text-gray-50 transition delay-50 break-words">{product.title}
+										</p>
+										<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50 flex gap-2">
+											{product.variations[0]?.variant.map((vBody) => (
+												<p>{vBody.variant_name}</p>
+											))}
+										</p>
+										<p className="text-sm text-blue-700 dark:text-blue-400 transition delay-50">
+										{product.variations[0].variant[0].parent_variant === null ? 
+											NumberWithSpace(parseInt(product.variations[0].variant[0].price)) 
+											:
+											NumberWithSpace(parseInt(product.variations[0].variant[0].mainVariant[0]?.price))}	
+										</p>
+									</div>
 								</div>
-							</div>
+							))}
 
-							<div className="p-2 md:p-5 flex flex-row items-center gap-4">
-								<Image src={"/second.jpeg"} width={130} height={130} objectFit="contain" alt="Sample image" className="rounded"/>
-								<div className="flex flex-col justify-center gap-px">
-									<p className="text-md font-semibold text-gray-700 dark:text-gray-50 transition delay-50">Sample item 
-									</p>
-									<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50">Color: White</p>
-									<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50">Size: S,M,L</p>
-									<p className="text-sm text-blue-700 dark:text-blue-400 transition delay-50">₱1,899</p>
-								</div>
-							</div>
-
-							<div className="p-2 md:p-5 flex flex-row items-center gap-4">
-								<Image src={"/third.jpeg"} width={130} height={130} objectFit="contain" alt="Sample image" className="rounded"/>
-								<div className="flex flex-col justify-center gap-px">
-									<p className="text-md font-semibold text-gray-700 dark:text-gray-50 transition delay-50">Sample item 
-									</p>
-									<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50">Color: White, Black</p>
-									<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50">Size: S,M,L</p>
-									<p className="text-sm text-blue-700 dark:text-blue-400 transition delay-50">₱1,899</p>
-								</div>
-							</div>
-
-							<div className="p-2 md:p-5 flex flex-row items-center gap-4">
-								<Image src={"/second.jpeg"} width={130} height={130} objectFit="contain" alt="Sample image" className="rounded"/>
-								<div className="flex flex-col justify-center gap-px">
-									<p className="text-md font-semibold text-gray-700 dark:text-gray-50 transition delay-50">Sample item 
-									</p>
-									<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50">Color: White</p>
-									<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50">Size: S,M,L</p>
-									<p className="text-sm text-blue-700 dark:text-blue-400 transition delay-50">₱1,899</p>
-								</div>
-							</div>
-
-							<div className="p-2 md:p-5 flex flex-row items-center gap-4">
-								<Image src={"/second.jpeg"} width={130} height={130} objectFit="contain" alt="Sample image" className="rounded"/>
-								<div className="flex flex-col justify-center gap-px">
-									<p className="text-md font-semibold text-gray-700 dark:text-gray-50 transition delay-50">Sample item 
-									</p>
-									<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50">Color: White</p>
-									<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50">Size: S,M,L</p>
-									<p className="text-sm text-blue-700 dark:text-blue-400 transition delay-50">₱1,899</p>
-								</div>
-							</div>
-
-							<div className="p-2 md:p-5 flex flex-row items-center gap-4">
-								<Image src={"/second.jpeg"} width={130} height={130} objectFit="contain" alt="Sample image" className="rounded"/>
-								<div className="flex flex-col justify-center gap-px">
-									<p className="text-md font-semibold text-gray-700 dark:text-gray-50 transition delay-50">Sample item 
-									</p>
-									<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50">Color: White</p>
-									<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50">Size: S,M,L</p>
-									<p className="text-sm text-blue-700 dark:text-blue-400 transition delay-50">₱1,899</p>
-								</div>
-							</div>
 						</div>
-						<div className="flex justify-center">
-							<input type="submit" value="See more..." className="px-10 py-1 text-blue-700 dark:text-blue-400 dark:bg-dark-card bg-gray-50 cursor-pointer dark:hover:bg-button-hover focus:bg-gray-100 transition delay-50 rounded-md" />
-						</div>
+						<Link href="/dailylife/foryou" passHref>
+							<div className="flex justify-center">
+								<p className="px-10 py-1 text-blue-700 dark:text-blue-400 dark:bg-dark-card bg-gray-50 cursor-pointer dark:hover:bg-button-hover focus:bg-gray-200 hover:bg-gray-200 transition delay-50 rounded-md">See more...</p>
+							</div>
+						</Link>
 					</div>
 				</div>
 			</div>
 		</>
 	)
 }
+

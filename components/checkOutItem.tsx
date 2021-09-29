@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import { selectTotal, selectTotalItems } from '../slices/cartSlice';
 
-export default function CheckOutItem({ id, title, price, quantity, product_image, variation, slug }) {
+export default function CheckOutItem({ id, title, price, quantity, image, variation, slug }) {
 	const [session] = useSession()
     const router = useRouter()
 
@@ -20,7 +20,7 @@ export default function CheckOutItem({ id, title, price, quantity, product_image
     
     return (
         <div className="flex flex-row gap-2 md:gap-4 items-center">
-            <Image src={`${process.env.IMAGE_BASE}/${product_image[0].image}`} width={130} height={130} objectFit="contain" alt="Sample image"/>
+            <Image src={`${process.env.IMAGE_BASE}/${image}`} width={130} height={130} objectFit="contain" alt={title}/>
             <div className="flex flex-col gap-px">
                 <p className="text-md font-semibold text-gray-600 dark:text-gray-50 transition delay-100">{title}</p>
                 <p className="text-sm text-gray-700 dark:text-gray-50 transition delay-100">

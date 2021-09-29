@@ -7,24 +7,13 @@ import { signOut, signIn } from 'next-auth/client'
 import LoginDropdown from '../components/dropdown'
 import SearchDropdown from '../components/searchDropdown'
 
-import { selectTotalItems, selectProducts } from "../slices/cartSlice"
+import { selectTotalItems } from "../slices/cartSlice"
 import { useSelector } from "react-redux"
-import { useRouter } from 'next/router'
-import { useState, useEffect } from 'react'
-
-import Result from './result'
-import Search from './search'
 
 export default function Navigation() {
     const [session] = useSession()
     const {theme, setTheme} = useTheme()
-    const router = useRouter()
     const totalItems = useSelector(selectTotalItems)
-    const products = useSelector(selectProducts)
-	
-    const [searchTerm, setSearchTerm] = useState('')
-    const [searchResults, setSearchResults] = useState([])
-    const [showResults, setShowResults] = useState(false)
 
     return(
         <>  

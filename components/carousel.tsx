@@ -3,11 +3,8 @@ import Link from 'next/link'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import NumberWithSpace from './currency'
-import { useSelector } from 'react-redux'
-import { selectProducts } from '../slices/cartSlice'
 
-export default function CarouselFeed(){
-    const products = useSelector(selectProducts)
+export default function CarouselFeed({products}){
     
     const responsive = {
         desktop: {

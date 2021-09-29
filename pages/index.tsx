@@ -20,7 +20,7 @@ function Home({products}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <CategoryGallery />
-      <CarouselFeed />
+      <CarouselFeed products={products}/>
     </div>
   )
 }

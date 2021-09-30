@@ -8,8 +8,10 @@ import QuantityCount from '../../../components/quantityCount'
 import axios from 'axios'
 import NumberWithSpace from '../../../components/currency'
 import Recommendation from '../../../components/recommendation'
+import { useRouter } from 'next/router'
 
 export default function Product({ product }) {
+	const router = useRouter()
     const dispatch = useDispatch()
 	const { slug, 
 		title, 
@@ -69,7 +71,8 @@ export default function Product({ product }) {
 		setQuantity(1)
 		setVariationData({})
 		setAdded(true)
-		
+		router.push("/dailylife/cart")
+
 	}
 
 	const handleVariation = (name, value) => {

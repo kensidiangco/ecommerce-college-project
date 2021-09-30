@@ -13,8 +13,8 @@ export default function ForYou() {
             <Head>
                 <title>For you</title>
             </Head>
-            <div className="md:py-6 py-6 container mx-auto">
-                <h1 className="text-2xl md:text-4xl font-semibold text-gray-800 dark:text-gray-50 m-2 md:mb-10 ml-4">For you</h1>
+            <div className="py-4 px-6 container mx-auto">
+                <h1 className="text-xl md:text-4xl py-2 md:py-6 font-semibold text-gray-800 dark:text-gray-50 ml-4 md:ml-10">For you</h1>
                 <div className="flex flex-wrap gap-4 md:gap-10 justify-center">
                     {products.map((product, idx) => (
                         <div key={idx} className="bg-white dark:bg-dark-card p-4 rounded-xl shadow-md w-72 flex flex-col justify-center gap-2">

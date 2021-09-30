@@ -2,7 +2,7 @@ import Head from 'next/head'
 import CategoryGallery from '../components/categoryGallery'
 import CarouselFeed from '../components/carousel'
 import { useEffect } from 'react'
-import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux"
 import { addProducts } from "../slices/cartSlice"
 
 function Home({products}) {

@@ -11,15 +11,15 @@ export default function Category({ products }) {
 	return(
 		<>
 			<Head>
-				<title>Products</title>
+				<title>{slug}</title>
 			</Head>
-            <div className="containter mx-auto py-6 px-4 md:py-10 md:px-20">
+            <div className="containter mx-auto py-6 px-4 md:py-6 md:px-20">
                 {/* <p className="text-xl font-semibold ml-20">FOR {(slug as string).toUpperCase}</p>*/}
-                {/* <p className="text-xl font-semibold ml-20">{products.length > 0 && <>FOR YOU</>}</p> */}
+                <p className="text-xl font-semibold md:ml-20 pb-2 md:pb-none">{products.length > 0 && <>FOR YOU</>}</p>
                 <p className="text-xl font-semibold md:ml-20 text-center">{products.length < 1 && <>No products to show.</>}</p>
                 <div className="flex flex-wrap gap-4 md:gap-10 justify-center">
                     {products.map((product, idx) => (
-                        <div key={idx} className="bg-white dark:bg-dark-card p-4 rounded-xl shadow-md md:w-72 flex flex-col justify-center gap-2">
+                        <div key={idx} className="bg-white dark:bg-dark-card rounded-xl shadow-md flex flex-col justify-center gap-2">
                             <Image
                                 key={idx}
                                 onClick={() => router.push(`../product/${encodeURIComponent(product.slug)}`)}
@@ -29,7 +29,7 @@ export default function Category({ products }) {
                                 alt={product.title}
                                 className="rounded-md cursor-pointer"
                             />
-                            <div className="flex flex-col gap-1">
+                            <div className="flex flex-col gap-1 px-4 py-1">
                                 <h2 className="text-xl break-words font-semibold">{product.title}</h2>
                                 <p className="flex gap-2">
                                     {product.variations[0]?.variant.map((vBody,idx) => (

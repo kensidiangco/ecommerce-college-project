@@ -10,32 +10,98 @@ import CheckOutItem from '../../components/checkOutItem'
 import axios from 'axios'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
+import {useTheme} from 'next-themes'
 
 function Checkout() {
+	const {theme, setTheme} = useTheme()
     const items = useSelector(selectItems)
     const totalPrice = useSelector(selectTotal)
-    const selectTotalItem = useSelector(selectTotalItems)
-	
+	console.log(items)
 	const router = useRouter()
 	const [session, loading] = useSession()
 
 	const [psgcAPI, setPsgcAPI] = useState([])
 
+	const [recipient, setRecipient] = useState('')
 	const [phone, setPhone] = useState('')
+	const [unit_or_floor, set_unit_or_floor] = useState('')
+	const [street, setStreet] = useState('')
 
 	const [region, setRegion] = useState('')
+	const [regionName, setRegionName] = useState('')
 
 	const [cities, setCities] = useState([])
 	const [city, setCity] = useState('')
 
-	const [barangays, setBarangays] = useState([])
-	const [barangay, setBarangay] = useState('')
-
 	const [districts, setDistricts] = useState([])
 	const [district, setDistrict] = useState('')
 
-	const onSubmit = () => {
-		router.push('/')
+	const [barangays, setBarangays] = useState([])
+	const [barangay, setBarangay] = useState('')
+
+	const [deliveryOption, setDeliveryOption] = useState('')
+	const [BGstyle, setBGStyle] = useState('')
+	const [TXTstyle, setTXTStyle] = useState('')
+
+	useEffect(() => {
+		if(theme === 'dark'){
+			setBGStyle('#3B3B3B')
+			setTXTStyle('#FBFBFB')
+		}else{
+			setBGStyle('#F3F4F6')
+			setTXTStyle('black')
+		}
+	}, [theme])
+
+	const onSubmit = (e) => {
+		e.preventDefault()
+
+		let title = []
+		let variation = []
+		let quantity = []
+
+		for(let i=0; i<items.length; i++) {
+			title.push(items[i].title)
+			variation.push(items[i].variation[0].Color + " " + items[i].variation[0].Size)
+			quantity.push(items[i].quantity)
+		}
+
+		console.log(title, variation, quantity)
+
+		axios.post(`${process.env.BACKEND_API_BASE}/store/api/place/order/`,{
+			email: session.user.email,
+			recipient_name: recipient,
+			phone_number: phone,
+			region: regionName,
+			city: city,
+			district: district,
+			barangay: barangay,
+			street: street,
+			unit_or_floor: unit_or_floor,
+			delivery_option: "COD",
+			total: parseInt(totalPrice)
+		})
+			.then(res => {
+				axios.post(`${process.env.BACKEND_API_BASE}/store/api/create/order/`, {
+					title: title,
+					variation: variation,
+					quantity: quantity
+				})
+				.catch(err => console.log("Wag nyo na po alalahanin yung bug, importante gumagana!"))
+			})
+			.catch(err => console.log(err))
+
+		router.push('/dailylife/success')
+	}
+	
+	const handleRegion = (e) => {
+		const value = e.target.value;
+		const index = e.target.selectedIndex;
+		const el = e.target.childNodes[index]
+  		const code =  el.getAttribute('id'); 
+
+		setRegion(code)
+		setRegionName(value)
 	}
 
 	useEffect(() => {
@@ -78,10 +144,10 @@ function Checkout() {
 					<form onSubmit={onSubmit} autoComplete="off">
 						<div className="flex flex-col gap-2 p-5 rounded-md shadow-md bg-gray-200 dark:bg-dark-card text-gray-800 dark:text-gray-50">
 							<h2 className="text-xl font-semibold">Information</h2>
-							<input type="email" name="email" placeholder="Email" defaultValue={!loading? session.user?.email : ""} className="p-2 rounded-md" required/>
+							<input type="email" name="email" placeholder="Email" value={!loading? session.user?.email : ""} className="p-2 rounded-md" required/>
 
 							<h2 className="mt-2 text-xl font-semibold">Delivery address</h2>
-							<input type="text" name="recipient" placeholder="Recipient's Name" className="p-2 rounded-md" required/>
+							<input type="text" name="recipient" placeholder="Recipient's Name" className="p-2 rounded-md" onChange={(e) => setRecipient(e.target.value)} value={recipient} required/>
 							<PhoneInput
 								country="ph"
 								onlyCountries={['ph', 'us']}
@@ -92,18 +158,15 @@ function Checkout() {
 									required: true,
 									autoFocus: true
 								}}
-								inputClass="text-black"
-								searchClass="text-black"
-								buttonClass="text-black"
-								containerClass="text-black"
-								dropdownClass="text-black"
+								inputStyle={{width: "100%", color: TXTstyle, backgroundColor: BGstyle, borderColor: BGstyle, borderRadius: '.4rem'}}
+								containerStyle={{width: "100%", color: TXTstyle, backgroundColor: BGstyle, borderColor: BGstyle, borderRadius: '.4rem'}}
 							/>
 							
-							<select name="region" className="p-2 rounded-md" value={region} onChange={(e) => setRegion(e.target.value)} required>
+							<select name="region" className="p-2 rounded-md" value={regionName} onChange={handleRegion} required>
 
 								<option value='' hidden>Region</option>
 								{psgcAPI?.map((region, idx) => (
-									<option key={idx} value={region.code}>{region.name}</option>
+									<option key={idx} value={region.name} id={region.code}>{region.name}</option>
 								))}
 
 							</select>
@@ -112,32 +175,34 @@ function Checkout() {
 
 								<option value='' hidden>City</option>
 								{cities?.map((city, idx) => (
-									<option key={idx} value={city.code}>{city.name}</option>
+									<option key={idx} value={city.name}>{city.name}</option>
 								))}
 
 							</select>}
 
-							{!!city && <select name="district" className="p-2 rounded-md" value={district} onChange={(e) => setDistrict(e.target.value)} required>
+							{!!city && <select name="district" className="p-2 rounded-md" value={district} onChange={(e) => setDistrict(e.target.value)}>
 
 								<option value='' hidden>District</option>
 								{districts?.map((district, idx) => (
-									<option key={idx} value={district.code}>{district.name}</option>
+									<option key={idx} value={district.name}>{district.name}</option>
 								))}
 
 							</select>}
 
-							{!!district && <select name="barangay" className="p-2 rounded-md" value={barangay} onChange={(e) => setBarangay(e.target.value)} required>
+							{!!city && <select name="barangay" className="p-2 rounded-md" value={barangay} onChange={(e) => setBarangay(e.target.value)} required>
 								<option value="">Barangay</option>
 								{barangays?.map((barangay, idx) => (
-									<option key={idx} value={barangay.code} className="">{barangay.name}</option>
+									<option key={idx} value={barangay.name} className="">{barangay.name}</option>
 								))}
 							</select>}
 
-							<input type="text" name="street" placeholder="Street" className="p-2 rounded-md" required/>
+							<input type="text" name="street" placeholder="Street" value={street} className="p-2 rounded-md" onChange={(e) => setStreet(e.target.value)} required/>
+
+							<input type="text" value={unit_or_floor} onChange={(e) => set_unit_or_floor(e.target.value)} name="unit_or_floor" placeholder="Unit/Floor" className="p-2 rounded-md"/>
 
 							<h2 className="mt-2 text-xl font-semibold">Payment method</h2>
-							<input type="text" name="Voucher" placeholder="Voucher code" className="p-2 rounded-md"/>
-							<select name="delivery" className="p-2 rounded-md" required>
+							<input type="text" name="Voucher" placeholder="Voucher code" className="p-2 rounded-md" disabled/>
+							<select name="delivery" className="p-2 rounded-md" value={deliveryOption} onChange={(e) => setDeliveryOption(e.target.value)} required>
 								<option value="cod">COD</option>
 								<option value="gcash" disabled>GCash</option>
 								<option value="paypal" disabled>Paypal</option>

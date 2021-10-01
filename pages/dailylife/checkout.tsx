@@ -1,23 +1,63 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { withAuth } from '../../constants/HOCs'
-import { useSession } from "next-auth/client";
+import { useSession } from "next-auth/client"
 import { useSelector } from 'react-redux'
-import { selectItems, selectTotal, selectTotalItems } from '../../slices/cartSlice';
-import NumberWithSpace from '../../components/currency';
+import { useEffect, useState } from 'react'
+import { selectItems, selectTotal, selectTotalItems } from '../../slices/cartSlice'
+import NumberWithSpace from '../../components/currency'
 import CheckOutItem from '../../components/checkOutItem'
+import axios from 'axios'
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
 
-function Checkout() {
+function Checkout({ psgcAPI }) {
     const items = useSelector(selectItems)
     const totalPrice = useSelector(selectTotal)
     const selectTotalItem = useSelector(selectTotalItems)
-
 	const router = useRouter()
 	const [session, loading] = useSession()
+	const [phone, setPhone] = useState('')
+
+	const [region, setRegion] = useState('')
+
+	const [cities, setCities] = useState([])
+	const [city, setCity] = useState('')
+
+	const [barangays, setBarangays] = useState([])
+	const [barangay, setBarangay] = useState('')
+
+	const [districts, setDistricts] = useState([])
+	const [district, setDistrict] = useState('')
 
 	const onSubmit = () => {
 		router.push('/')
 	}
+
+	useEffect(() => {
+		axios.get(`https://psgc.gitlab.io/api/regions/${region}/cities/`)
+			.then(res => {
+				setCities(res.data)
+			})
+			.catch(err => console.log(err))
+		}, [region])
+	
+	useEffect(() => {
+		axios.get(`https://psgc.gitlab.io/api/regions/${region}/sub-municipalities/`)
+			.then(res => {
+				setDistricts(res.data)
+			})
+			.catch(err => console.log(err))
+		}, [region])
+		
+	useEffect(() => {
+		axios.get(`https://psgc.gitlab.io/api/sub-municipalities/${district}/barangays/`)
+			.then(res => {
+				setBarangays(res.data)
+			})
+			.catch(err => console.log(err))
+		}, [city])
+
 
 	return (
 		<>
@@ -32,12 +72,59 @@ function Checkout() {
 							<input type="email" name="email" placeholder="Email" defaultValue={!loading? session.user?.email : ""} className="p-2 rounded-md" required/>
 
 							<h2 className="mt-2 text-xl font-semibold">Delivery address</h2>
-							<input type="text" name="name" placeholder="Full name" className="p-2 rounded-md" required/>
-							<input type="text" name="address1" placeholder="Present address" className="p-2 rounded-md" required/>
-							<input type="text" name="brgy" placeholder="Baranggay" className="p-2 rounded-md" required/>
-							<input type="text" name="zone" placeholder="Zone" className="p-2 rounded-md" required/>
-							<input type="text" name="district" placeholder="District" className="p-2 rounded-md" required/>
-							<input type="text" name="zip code" placeholder="Zip code" className="p-2 rounded-md" required/>
+							<input type="text" name="recipient" placeholder="Recipient's Name" className="p-2 rounded-md" required/>
+							<PhoneInput
+								country="ph"
+								onlyCountries={['ph', 'us']}
+								value={phone}
+								onChange={(e) => setPhone(e)}
+								inputProps={{
+									name: 'phone',
+									required: true,
+									autoFocus: true
+								}}
+								inputClass="text-black"
+								searchClass="text-black"
+								buttonClass="text-black"
+								containerClass="text-black"
+								dropdownClass="text-black"
+							/>
+							
+							<select name="region" className="p-2 rounded-md" value={region} onChange={(e) => setRegion(e.target.value)} required>
+
+								<option value='' hidden>Region</option>
+								{psgcAPI.map((region, idx) => (
+									<option key={idx} value={region.code}>{region.name}</option>
+								))}
+
+							</select>
+							
+							{!!region && <select name="city" className="p-2 rounded-md" value={city} onChange={(e) => setCity(e.target.value)} required>
+
+								<option value='' hidden>City</option>
+								{cities.map((city, idx) => (
+									<option key={idx} value={city.code}>{city.name}</option>
+								))}
+
+							</select>}
+
+							{!!city && <select name="district" className="p-2 rounded-md" value={district} onChange={(e) => setDistrict(e.target.value)} required>
+
+								<option value='' hidden>District</option>
+								{districts.map((district, idx) => (
+									<option key={idx} value={district.code}>{district.name}</option>
+								))}
+
+							</select>}
+
+							{!!district && <select name="barangay" className="p-2 rounded-md" value={barangay} onChange={(e) => setBarangay(e.target.value)} required>
+								<option value="">Barangay</option>
+								{barangays.map((barangay, idx) => (
+									<option value={barangay.code} className="">{barangay.name}</option>
+								))}
+							</select>}
+
+							<input type="text" name="street" placeholder="Street" className="p-2 rounded-md" required/>
 
 							<h2 className="mt-2 text-xl font-semibold">Payment method</h2>
 							<input type="text" name="Voucher" placeholder="Voucher code" className="p-2 rounded-md"/>
@@ -69,4 +156,13 @@ function Checkout() {
 	)
 }
 
-export default withAuth(3 * 60)(Checkout);
+export async function getStaticProps() {
+	const res = await fetch('https://psgc.gitlab.io/api/regions/')
+	const psgcAPI = await res.json()
+  
+	return {
+		props: { psgcAPI },
+	}
+}
+
+export default withAuth(3*60)(Checkout);

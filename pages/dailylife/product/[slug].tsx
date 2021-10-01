@@ -190,7 +190,7 @@ export default function Product({ product }) {
 								))}
 							</div>
 							<div className="flex justify-center gap-4 py-2">
-								<button className="text-gray-50 bg-blue-600 hover:bg-blue-500 py-2 px-4 rounded dark:bg-dark-button dark:hover:bg-button-hover">Buy now</button>
+								<button className="text-gray-50 bg-blue-600 hover:bg-blue-500 py-2 px-4 rounded dark:bg-dark-button dark:hover:bg-button-hover disabled:opacity-50" disabled>Buy now</button>
 								<button 
 									className="disabled:opacity-50 text-gray-50 bg-blue-600 hover:bg-blue-500 py-2 px-4 rounded dark:bg-dark-button dark:hover:bg-button-hover"
 									onClick={addItemToCart} 

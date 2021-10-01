@@ -202,8 +202,8 @@ export default function Product({ product }) {
 					</div>
 					<div className="flex flex-col gap-2 p-6 w-full rounded-md bg-white shadow-md dark:bg-dark-card">
 						<h2 className="text-xl font-semibold">Description:</h2>
-						<div>
-							<pre className="">{description}</pre>
+						<div className="">
+							<pre className="whitespace-pre-line">{description}</pre>
 						</div>
 					</div>
 				</div>

@@ -11,12 +11,16 @@ import axios from 'axios'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
-function Checkout({ psgcAPI }) {
+function Checkout() {
     const items = useSelector(selectItems)
     const totalPrice = useSelector(selectTotal)
     const selectTotalItem = useSelector(selectTotalItems)
+	
 	const router = useRouter()
 	const [session, loading] = useSession()
+
+	const [psgcAPI, setPsgcAPI] = useState([])
+
 	const [phone, setPhone] = useState('')
 
 	const [region, setRegion] = useState('')
@@ -35,6 +39,11 @@ function Checkout({ psgcAPI }) {
 	}
 
 	useEffect(() => {
+		axios.get('https://psgc.gitlab.io/api/regions/')
+			.then(res => setPsgcAPI(res.data))
+			.catch(err => console.log(err))
+	}, [])
+	useEffect(() => {
 		axios.get(`https://psgc.gitlab.io/api/regions/${region}/cities/`)
 			.then(res => {
 				setCities(res.data)
@@ -51,12 +60,12 @@ function Checkout({ psgcAPI }) {
 		}, [region])
 		
 	useEffect(() => {
-		axios.get(`https://psgc.gitlab.io/api/sub-municipalities/${district}/barangays/`)
+		axios.get(`https://psgc.gitlab.io/api/regions/${region}/barangays/`)
 			.then(res => {
 				setBarangays(res.data)
 			})
 			.catch(err => console.log(err))
-		}, [city])
+		}, [region])
 
 
 	return (
@@ -93,7 +102,7 @@ function Checkout({ psgcAPI }) {
 							<select name="region" className="p-2 rounded-md" value={region} onChange={(e) => setRegion(e.target.value)} required>
 
 								<option value='' hidden>Region</option>
-								{psgcAPI.map((region, idx) => (
+								{psgcAPI?.map((region, idx) => (
 									<option key={idx} value={region.code}>{region.name}</option>
 								))}
 
@@ -102,7 +111,7 @@ function Checkout({ psgcAPI }) {
 							{!!region && <select name="city" className="p-2 rounded-md" value={city} onChange={(e) => setCity(e.target.value)} required>
 
 								<option value='' hidden>City</option>
-								{cities.map((city, idx) => (
+								{cities?.map((city, idx) => (
 									<option key={idx} value={city.code}>{city.name}</option>
 								))}
 
@@ -111,7 +120,7 @@ function Checkout({ psgcAPI }) {
 							{!!city && <select name="district" className="p-2 rounded-md" value={district} onChange={(e) => setDistrict(e.target.value)} required>
 
 								<option value='' hidden>District</option>
-								{districts.map((district, idx) => (
+								{districts?.map((district, idx) => (
 									<option key={idx} value={district.code}>{district.name}</option>
 								))}
 
@@ -119,8 +128,8 @@ function Checkout({ psgcAPI }) {
 
 							{!!district && <select name="barangay" className="p-2 rounded-md" value={barangay} onChange={(e) => setBarangay(e.target.value)} required>
 								<option value="">Barangay</option>
-								{barangays.map((barangay, idx) => (
-									<option value={barangay.code} className="">{barangay.name}</option>
+								{barangays?.map((barangay, idx) => (
+									<option key={idx} value={barangay.code} className="">{barangay.name}</option>
 								))}
 							</select>}
 

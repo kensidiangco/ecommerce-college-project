@@ -5,7 +5,7 @@ export default function CategoryGallery(){
         <div className="container mx-auto">
             <div className="lg:ml-60 grid-cols-2 p-10 space-y-2 lg:space-y-0 lg:grid lg:gap-3 font-semibold">
 
-                <Link href="/dailylife/category/plain-tees" passHref>
+                <Link href="/dailylife/category/tees" passHref>
                     <figure className="lg:w-full transition duration-300 hover:shadow-md transform hover:scale-95 cursor-pointer">
                         <img className="rounded-sm" src="/1.jpg" alt="Dailylife"/>
                         <figcaption className="absolute text-lg -mt-16 text-white px-4 filter drop-shadow-lg">

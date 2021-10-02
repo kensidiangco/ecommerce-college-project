@@ -166,7 +166,7 @@ export default function Product({ product }) {
 											<option 
 												key={idx} 
 												id={data.id} 
-												value={data.variant_name}
+												value={data.slug}
 											>
 												{data.variant_name}
 											</option>

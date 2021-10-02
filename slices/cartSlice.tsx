@@ -22,6 +22,9 @@ export const cartSlice = createSlice({
     clearFilters: (state) => {
       state.filteredProducts = state.products
     },
+    clearCart: (state) => {
+      state.items = []
+    },
     addToCart: (state, action) => {
       const index = state.items.findIndex(cartItem => _.isEqual(destr(JSON.stringify(cartItem.variation)), action.payload.variation))
       if(action.payload.quantity > 0){
@@ -58,7 +61,7 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, removeFromCart, updateQuantity, addProducts, updateFilters, clearFilters } = cartSlice.actions;
+export const { addToCart, removeFromCart, updateQuantity, addProducts, updateFilters, clearFilters, clearCart } = cartSlice.actions;
 
 // Selectors - This is how we pull information from the Global store slice
 export const selectItems = (state) => state.cart.items;

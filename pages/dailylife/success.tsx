@@ -3,14 +3,16 @@ import Link from 'next/link'
 import Image from 'next/image'
 import NumberWithSpace from '../../components/currency'
 import { withAuth } from '../../constants/HOCs'
-import { useSelector } from "react-redux"
-import { selectProducts } from '../../slices/cartSlice'
+import { useDispatch, useSelector } from "react-redux"
+import { selectProducts, clearCart } from '../../slices/cartSlice'
 import { useEffect } from 'react'
+
 function Success() {
     const products = useSelector(selectProducts)
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        localStorage.removeItem('persist:cart')
+        dispatch(clearCart())
     }, [])
 
     return (

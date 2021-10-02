@@ -5,9 +5,14 @@ import NumberWithSpace from '../../components/currency'
 import { withAuth } from '../../constants/HOCs'
 import { useSelector } from "react-redux"
 import { selectProducts } from '../../slices/cartSlice'
+import { useEffect } from 'react'
 function Success() {
     const products = useSelector(selectProducts)
-    
+
+    useEffect(() => {
+        localStorage.removeItem('persist:cart')
+    }, [])
+
     return (
         <>
             <Head>
@@ -70,4 +75,4 @@ function Success() {
     )
 }
 
-export default Success
+export default withAuth(3 * 60)(Success)

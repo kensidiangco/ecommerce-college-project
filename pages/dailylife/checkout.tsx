@@ -16,7 +16,6 @@ function Checkout() {
 	const {theme, setTheme} = useTheme()
     const items = useSelector(selectItems)
     const totalPrice = useSelector(selectTotal)
-	console.log(items)
 	const router = useRouter()
 	const [session, loading] = useSession()
 

@@ -24,7 +24,7 @@ export default function CartItem({ title, price, quantity, photo, variation, slu
                 className="rounded-md cursor-pointer"
                 onClick={() => router.push(`/dailylife/product/${slug}`)}
                 alt={title}
-                
+                objectFit="contain"
             />
 
             <div className="py-4 px-6 md:px-4">

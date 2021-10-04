@@ -28,6 +28,7 @@ export default function Category({ products }) {
                                 height={250}
                                 alt={product.title}
                                 className="rounded-md cursor-pointer"
+                                objectFit="contain"
                             />
                             <div className="flex flex-col gap-1 px-4 py-1">
                                 <h2 className="text-xl break-words font-semibold">{product.title}</h2>

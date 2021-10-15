@@ -154,8 +154,7 @@ function Checkout() {
 								onChange={(e) => setPhone(e)}
 								inputProps={{
 									name: 'phone',
-									required: true,
-									autoFocus: true
+									required: true
 								}}
 								inputStyle={{width: "100%", color: TXTstyle, backgroundColor: BGstyle, borderColor: BGstyle, borderRadius: '.4rem'}}
 								containerStyle={{width: "100%", color: TXTstyle, backgroundColor: BGstyle, borderColor: BGstyle, borderRadius: '.4rem'}}

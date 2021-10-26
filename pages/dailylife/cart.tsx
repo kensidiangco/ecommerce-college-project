@@ -22,7 +22,7 @@ export default function Cart() {
 			</Head>
 
 			<div className="container mx-auto md:px-6 py-4 md:py-6 md:py-10 px-8 md:px-2">
-				<div className={`flex justify-center md:space-x-4 space-y-4 ${items.length < 1 ? "items-center flex-col" : "flex-col md:flex-row"}`}>
+				<div className={`flex justify-center md:space-x-4 ${items.length < 1 ? "items-center flex-col space-y-4" : "flex-col md:flex-row"}`}>
 					<div className="md:flex-1 w-full">
 						{items.length < 1 && 
 							<div className="grid gap-4 gap-px dark:bg-dark-card bg-gray-50 shadow-md rounded-md p-10 text-center space-y-2">

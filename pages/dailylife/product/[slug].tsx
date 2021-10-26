@@ -115,7 +115,7 @@ export default function Product({ product }) {
 							alt={product.title}
 							className="rounded-md shadow-md"
 						/>
-						<div className="mx-auto p-4 w-96 flex-1">
+						<div className="mx-auto p-4 md:w-96 flex-1">
 							<p className="cursor-pointer">
 								<Link href={`../category/${encodeURIComponent(category.slug)}`} passHref>
 									<p className="text-sm text-gray-600 dark:text-gray-300 py-2"><small>Category:</small> {category.name}</p>

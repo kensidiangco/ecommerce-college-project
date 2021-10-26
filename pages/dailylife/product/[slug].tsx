@@ -106,7 +106,7 @@ export default function Product({ product }) {
             </Head>
             <div className="container mx-auto py-8 md:py-8 px-4 flex flex-col md:flex-row justify-center md:gap-4">
 				<div className="flex flex-col justify-center items-center gap-3">
-					<div className="flex flex-col md:flex-row md:p-4 rounded-md bg-white dark:bg-dark-card md:gap-4 shadow-md">
+					<div className="flex flex-col md:flex-row md:p-4 rounded-md bg-white dark:bg-dark-card md:gap-4 shadow-md min-w-0">
 						<Image 
 							src={photo ? photo : `${process.env.IMAGE_BASE}/${product.product_image[0].image}`}
 							width={300}
@@ -115,14 +115,14 @@ export default function Product({ product }) {
 							alt={product.title}
 							className="rounded-md shadow-md"
 						/>
-						<div className="flex justify-center flex-col p-4">
+						<div className="mx-auto p-4 w-96 flex-1">
 							<p className="cursor-pointer">
 								<Link href={`../category/${encodeURIComponent(category.slug)}`} passHref>
 									<p className="text-sm text-gray-600 dark:text-gray-300 py-2"><small>Category:</small> {category.name}</p>
 								</Link>
 							</p>
-							<p className="text-2xl font-semibold">{product.title}</p>
-							<p className="text-yellow-600 text-xl text-center">
+							<p className="text-2xl font-semibold break-words">{product.title}</p>
+							<p className="text-yellow-600 text-xl">
 
 								{/* {product.variations[0].variant[0].parent_variant === null ? 
 									NumberWithSpace(parseInt(product.variations[0].variant[0].price)) 

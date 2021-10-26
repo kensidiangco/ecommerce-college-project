@@ -26,10 +26,11 @@ export default function ForYou() {
                                     height={250}
                                     alt={product.title}
                                     className="rounded-md cursor-pointer"
+                                    objectFit="contain"
                                 />
                             </Link>
                             <div className="flex flex-col gap-1">
-                                <h2 className="text-xl break-words font-semibold">{product.title}</h2>
+                                <h2 className="text-md break-words font-semibold">{product.title}</h2>
                                 <p className="flex gap-2">
                                     {product.variations[0]?.variant.map((vBody, idx) => (
                                         <p key={idx}>{vBody.variant_name}</p>

@@ -17,9 +17,10 @@ export default function Category({ products }) {
                 {/* <p className="text-xl font-semibold ml-20">FOR {(slug as string).toUpperCase}</p>*/}
                 <p className="text-xl font-semibold md:ml-20 pb-2 md:pb-none">{products.length > 0 && <>FOR YOU</>}</p>
                 <p className="text-xl font-semibold md:ml-20 text-center">{products.length < 1 && <>No products to show.</>}</p>
+
                 <div className="flex flex-wrap gap-4 md:gap-10 justify-center">
                     {products.map((product, idx) => (
-                        <div key={idx} className="bg-white dark:bg-dark-card rounded-xl shadow-md flex flex-col justify-center gap-2">
+                        <div key={idx} className="bg-white dark:bg-dark-card rounded-xl shadow-md flex flex-col justify-center gap-2 py-4">
                             <Image
                                 key={idx}
                                 onClick={() => router.push(`../product/${encodeURIComponent(product.slug)}`)}
@@ -30,8 +31,8 @@ export default function Category({ products }) {
                                 className="rounded-md cursor-pointer"
                                 objectFit="contain"
                             />
-                            <div className="flex flex-col gap-1 px-4 py-1">
-                                <h2 className="text-xl break-words font-semibold">{product.title}</h2>
+                            <div className="flex flex-col gap-1 px-4 py-1 flex-1 w-72">
+                                <h2 className="text-md break-words">{product.title}</h2>
                                 <p className="flex gap-2">
                                     {product.variations[0]?.variant.map((vBody,idx) => (
                                         <p key={idx}>{vBody.variant_name}</p>

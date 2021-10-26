@@ -17,18 +17,17 @@ export default function CartItem({ title, price, quantity, photo, variation, slu
 	const body = Object.values(variations)
 
     return (
-        <div className="flex flex-col md:flex-row md:py-2 md:bg-none dark:bg-dark-card bg-gray-50 rounded-md shadow-md md:shadow-none">
+        <div className="flex flex-col md:flex-row md:py-2 md:bg-none dark:bg-dark-card bg-gray-50 rounded-md shadow-md md:shadow-none min-w-0">
             <Image 
                 src={photo} 
                 width={200} height={200}
                 className="rounded-md cursor-pointer"
                 onClick={() => router.push(`/dailylife/product/${slug}`)}
                 alt={title}
-                objectFit="contain"
             />
 
-            <div className="py-4 px-6 md:px-4">
-                <p className="text-xl font-semibold text-gray-700 dark:text-gray-50 transition delay-50">{title}</p>
+            <div className="py-4 px-6 md:px-4 md:flex-1 w-full">
+                <p className="text-xl font-semibold text-gray-700 dark:text-gray-50 transition delay-50 break-words">{title}</p>
                 
                 <p className="text-md text-gray-700 dark:text-gray-50 transition delay-50">
                     {headers.map((header, i) => (

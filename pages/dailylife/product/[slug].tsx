@@ -12,16 +12,16 @@ import { useRouter } from 'next/router'
 
 export default function Product({ product }) {
 	const router = useRouter()
-    const dispatch = useDispatch()
-	const { slug, 
-		title, 
-		product_image, 
-		description, 
-		category, 
-		variations 
+	const dispatch = useDispatch()
+	const { slug,
+		title,
+		product_image,
+		description,
+		category,
+		variations
 	} = product
 	const products = useSelector(selectProducts)
-    const [quantity, setQuantity] = useState(1)
+	const [quantity, setQuantity] = useState(1)
 
 	const [variationData, setVariationData] = useState({})
 	const variationDataLength = Object.keys(variationData).length
@@ -29,14 +29,14 @@ export default function Product({ product }) {
 	const [price, setPrice] = useState(0)
 	const [priceRange, setPriceRange] = useState([])
 	const range = priceRange.map(x => x);
-	
+
 	const [photo, setPhoto] = useState('')
 	const [itemRecommended] = useState(products?.filter(prod => prod.category.name === category.name).length)
-	
+
 	const [added, setAdded] = useState(false)
 
 	useEffect(() => {
-		if(added){
+		if (added) {
 			setTimeout(() => setAdded(false), 2000)
 		}
 	}, [added])
@@ -45,11 +45,11 @@ export default function Product({ product }) {
 		setPhoto('')
 	}, [product])
 
-    useEffect(() => {
+	useEffect(() => {
 		let price_range_data = []
-		
+
 		product.variations.map(v => v.variant.map(d => {
-			if(!!d.price){
+			if (!!d.price) {
 				price_range_data.push(d.price)
 			}
 		}))
@@ -57,7 +57,7 @@ export default function Product({ product }) {
 	}, [product])
 
 	const addItemToCart = () => {
-		
+
 		dispatch(addToCart({
 			photo,
 			category,
@@ -76,15 +76,15 @@ export default function Product({ product }) {
 	}
 
 	const handleVariation = (name, value) => {
-		setVariationData(prevState=> ({
+		setVariationData(prevState => ({
 			...prevState,
-			[name]:value,
+			[name]: value,
 		}))
 
 		axios.get(`${process.env.BACKEND_API_BASE}/store/api/variant/${value}/`)
 			.then(res => {
 				setPrice(parseInt(res.data.price))
-				setVariationData(prevState=> ({
+				setVariationData(prevState => ({
 					...prevState,
 					[res.data.variation.name]: res.data.variant_name,
 				}))
@@ -99,15 +99,15 @@ export default function Product({ product }) {
 	}
 
 
-    return (
-        <>
-            <Head>
-                <title>{slug}</title>
-            </Head>
-            <div className="container mx-auto py-8 md:py-8 px-4 flex flex-col md:flex-row justify-center md:gap-4">
+	return (
+		<>
+			<Head>
+				<title>{slug}</title>
+			</Head>
+			<div className="container mx-auto py-8 md:py-8 px-4 flex flex-col md:flex-row justify-center md:gap-4">
 				<div className="flex flex-col justify-center items-center gap-3">
 					<div className="flex flex-col md:flex-row md:p-4 rounded-md bg-white dark:bg-dark-card md:gap-4 shadow-md min-w-0">
-						<Image 
+						<Image
 							src={photo ? photo : `${process.env.IMAGE_BASE}/${product.product_image[0].image}`}
 							width={300}
 							height={300}
@@ -162,17 +162,17 @@ export default function Product({ product }) {
 										onChange={(e) => handleVariation(e.target.name, e.target.value)}
 									>
 										<option value=''>{variation.variation_name}</option>
-										{variation.variant.map(	(data, idx) => (
-											<option 
-												key={idx} 
-												id={data.id} 
+										{variation.variant.map((data, idx) => (
+											<option
+												key={idx}
+												id={data.id}
 												value={data.slug}
 											>
 												{data.variant_name}
 											</option>
 
 										))}
-									</select>	
+									</select>
 								))}
 							</div>
 							<QuantityCount setQuantity={setQuantity} quantity={quantity} />
@@ -186,16 +186,16 @@ export default function Product({ product }) {
 										alt={image.image}
 										key={idx}
 										onClick={() => setPhoto(`${process.env.IMAGE_BASE}/${image.image}`)}
-									/> 
+									/>
 								))}
 							</div>
 							<div className="flex justify-center gap-4 py-2">
 								<button className="text-gray-50 bg-blue-600 hover:bg-blue-500 py-2 px-4 rounded dark:bg-dark-button dark:hover:bg-button-hover disabled:opacity-50" disabled>Buy now</button>
-								<button 
+								<button
 									className="disabled:opacity-50 text-gray-50 bg-blue-600 hover:bg-blue-500 py-2 px-4 rounded dark:bg-dark-button dark:hover:bg-button-hover"
-									onClick={addItemToCart} 
+									onClick={addItemToCart}
 									disabled={added || variationDataLength < variations.length}>
-										{added ? 'Added!' : 'Add to Cart'}
+									{added ? 'Added!' : 'Add to Cart'}
 								</button>
 							</div>
 						</div>
@@ -208,35 +208,35 @@ export default function Product({ product }) {
 					</div>
 				</div>
 
-				{itemRecommended > 1 && <Recommendation product={product} products={products}/>}
-            </div>
-        </>
-    )
+				{itemRecommended > 1 && <Recommendation product={product} products={products} />}
+			</div>
+		</>
+	)
 }
 
 export const getStaticPaths = async () => {
-    const products = await fetch(`${process.env.BACKEND_API_BASE}/store/api/`).then(response => response.json())
-    const paths = products.map(product => {
-        return { 
-            params: { slug: product.slug }
-        }
-    })
+	const products = await fetch(`${process.env.BACKEND_API_BASE}/store/api/`).then(response => response.json())
+	const paths = products.map(product => {
+		return {
+			params: { slug: product.slug }
+		}
+	})
 
-    return {
-        paths,
-        fallback: false
-    }
+	return {
+		paths,
+		fallback: false
+	}
 }
 
 export const getStaticProps = async (context) => {
-    const slug = context.params.slug
-    const product = await fetch(`${process.env.BACKEND_API_BASE}/store/api/product/${slug}/`).then(response => response.json())
+	const slug = context.params.slug
+	const product = await fetch(`${process.env.BACKEND_API_BASE}/store/api/product/${slug}/`).then(response => response.json())
 
-    const res = await fetch(`${process.env.BACKEND_API_BASE}/store/api/`)
-  	const products = await res.json()
+	const res = await fetch(`${process.env.BACKEND_API_BASE}/store/api/`)
+	const products = await res.json()
 
-    return {
-        props: { product, products },
-        revalidate: 10,
-    }
+	return {
+		props: { product, products },
+		revalidate: 10,
+	}
 }

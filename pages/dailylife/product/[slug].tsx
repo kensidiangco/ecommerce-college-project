@@ -107,7 +107,7 @@ export default function Product({ product }) {
 				<div className="flex flex-col justify-center items-center gap-3">
 					<div className="flex flex-col md:flex-row md:p-4 rounded-md bg-white dark:bg-dark-card md:gap-4 shadow-md min-w-0">
 						<Image
-							src={photo ? photo : `${process.env.IMAGE_BASE}/${product.product_image[0].image}`}
+							src={`${process.env.IMAGE_BASE}/${product.product_image[0].image}`}
 							width={300}
 							height={300}
 							objectFit="contain"

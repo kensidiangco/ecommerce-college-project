@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import NumberWithSpace from './currency';
 import { useRouter } from 'next/router';
 
-export default function CartItem({ title, price, quantity, photo, variation, slug }) {
+export default function CartItem({ title, price, quantity, photo, variant, slug }) {
     const router = useRouter()
     const dispatch = useDispatch()
 
@@ -12,9 +12,9 @@ export default function CartItem({ title, price, quantity, photo, variation, slu
 		dispatch(removeFromCart({ slug }))
 	}
 
-	const variations = Array.isArray(variation) && variation.length ? variation[0] : {};
-	const headers = Object.keys(variations)
-	const body = Object.values(variations)
+	// const variations = Array.isArray(variation) && variation.length ? variation[0] : {};
+	// const headers = Object.keys(variations)
+	// const body = Object.values(variations)
 
     return (
         <div className="flex flex-col md:flex-row md:py-2 md:bg-none dark:bg-dark-card bg-gray-50 rounded-md shadow-md md:shadow-none min-w-0">
@@ -29,16 +29,17 @@ export default function CartItem({ title, price, quantity, photo, variation, slu
             <div className="py-4 px-6 md:px-4 md:flex-1 w-full">
                 <p className="text-xl font-semibold text-gray-700 dark:text-gray-50 transition delay-50 break-words">{title}</p>
                 
-                <p className="text-md text-gray-700 dark:text-gray-50 transition delay-50">
+                {/* <p className="text-md text-gray-700 dark:text-gray-50 transition delay-50">
                     {headers.map((header, i) => (
                         <th key={i}>{header}&nbsp;&nbsp;&nbsp;&nbsp;</th>
                     ))}
-                </p>
+                </p> */}
                 
-                <p className="text-md text-gray-700 dark:text-gray-50 transition delay-50">
-                    {body.map((value, i) => (
+                <p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50">
+                    {/* {body.map((value, i) => (
                         <td key={i}>{value}&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    ))}
+                    ))} */}
+                    {variant}
                 </p>
                 
                 <p className="text-md text-blue-700 dark:text-blue-400 transition delay-50">

@@ -65,15 +65,17 @@ export default function Cart() {
 										<p className="text-sm md:text-md font-semibold text-gray-700 dark:text-gray-50 transition delay-50 break-words">{product.title}
 										</p>
 										<p className="text-sm text-gray-700 dark:text-gray-50 transition delay-50 flex gap-2">
-											{product.variations[0]?.variant.map((vBody, idx) => (
+											{/* {product.variations[0]?.variant.map((vBody, idx) => (
 												<p key={idx}>{vBody.variant_name}</p>
-											))}
+											))} */}
+											{product.variant}
 										</p>
 										<p className="text-sm text-blue-700 dark:text-blue-400 transition delay-50">
-										{product.variations[0].variant[0].parent_variant === null ? 
+										{/* {product.variations[0].variant[0].parent_variant === null ? 
 											NumberWithSpace(parseInt(product.variations[0].variant[0].price)) 
 											:
-											NumberWithSpace(parseInt(product.variations[0].variant[0].mainVariant[0]?.price))}	
+											NumberWithSpace(parseInt(product.variations[0].variant[0].mainVariant[0]?.price))}	 */}
+											{product.price}
 										</p>
 									</div>
 								</div>

@@ -39,6 +39,7 @@ function Checkout() {
 	const [barangay, setBarangay] = useState('')
 
 	const [deliveryOption, setDeliveryOption] = useState('')
+
 	const [BGstyle, setBGStyle] = useState('')
 	const [TXTstyle, setTXTStyle] = useState('')
 
@@ -54,20 +55,17 @@ function Checkout() {
 
 	const onSubmit = (e) => {
 		e.preventDefault()
+		// let title = []
+		// let variation = []
+		// let quantity = []
 
-		let title = []
-		let variation = []
-		let quantity = []
+		// for(let i=0; i<items.length; i++) {
+		// 	title.push(items[i].title)
+		// 	variation.push(items[i].variant)
+		// 	quantity.push(items[i].quantity)
+		// }
 
-		for(let i=0; i<items.length; i++) {
-			title.push(items[i].title)
-			variation.push(items[i].variation[0].Color + " " + items[i].variation[0].Size)
-			quantity.push(items[i].quantity)
-		}
-
-		console.log(title, variation, quantity)
-
-		axios.post(`${process.env.BACKEND_API_BASE}/store/api/place/order/`,{
+		let data = {
 			email: session.user.email,
 			recipient_name: recipient,
 			phone_number: phone,
@@ -77,20 +75,23 @@ function Checkout() {
 			barangay: barangay,
 			street: street,
 			unit_or_floor: unit_or_floor,
-			delivery_option: "COD",
-			total: parseInt(totalPrice)
-		})
+			total: parseInt(totalPrice),
+			orders: items
+		}
+		console.log(JSON.stringify(data), "orders:", JSON.stringify(items))
+
+		axios.post(`${process.env.BACKEND_API_BASE}/store/api/place/order/`, data)
 			.then(res => {
-				axios.post(`${process.env.BACKEND_API_BASE}/store/api/create/order/`, {
-					title: title,
-					variation: variation,
-					quantity: quantity
-				})
-				.catch(err => console.log("Wag nyo na po alalahanin yung bug, importante gumagana!"))
+				// axios.post(`${process.env.BACKEND_API_BASE}/store/api/create/order/`, {
+				// 	title: title,
+				// 	variation: variation,
+				// 	quantity: quantity
+				// })
+				// .catch(err => console.log("Wag nyo na po alalahanin yung bug, importante gumagana!"))
+				console.log(res.data)
+				router.push('/dailylife/success')
 			})
 			.catch(err => console.log(err))
-
-		router.push('/dailylife/success')
 	}
 	
 	const handleRegion = (e) => {
@@ -102,7 +103,7 @@ function Checkout() {
 		setRegion(code)
 		setRegionName(value)
 	}
-
+// LOCATION API
 	useEffect(() => {
 		axios.get('https://psgc.gitlab.io/api/regions/')
 			.then(res => setPsgcAPI(res.data))

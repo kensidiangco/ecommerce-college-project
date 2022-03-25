@@ -15,20 +15,20 @@ export default function Product({ product }) {
 	const dispatch = useDispatch()
 	const { slug,
 		title,
+		variant,
+		price,
 		product_image,
 		description,
 		category,
-		variations
 	} = product
 	const products = useSelector(selectProducts)
 	const [quantity, setQuantity] = useState(1)
 
-	const [variationData, setVariationData] = useState({})
-	const variationDataLength = Object.keys(variationData).length
+	// const [variationData, setVariationData] = useState({})
+	// const variationDataLength = Object.keys(variationData).length
 
-	const [price, setPrice] = useState(0)
-	const [priceRange, setPriceRange] = useState([])
-	const range = priceRange.map(x => x);
+	// const [priceRange, setPriceRange] = useState([])
+	// const range = priceRange.map(x => x);
 
 	const [photo, setPhoto] = useState('')
 	const [itemRecommended] = useState(products?.filter(prod => prod.category.name === category.name).length)
@@ -41,62 +41,61 @@ export default function Product({ product }) {
 		}
 	}, [added])
 
-	useEffect(() => {
-		setPhoto('')
-	}, [product])
+	// useEffect(() => {
+	// 	setPhoto('')
+	// }, [product])
 
-	useEffect(() => {
-		let price_range_data = []
+	// useEffect(() => {
+	// 	let price_range_data = []
 
-		product.variations.map(v => v.variant.map(d => {
-			if (!!d.price) {
-				price_range_data.push(d.price)
-			}
-		}))
-		setPriceRange(price_range_data)
-	}, [product])
+	// 	product.variations.map(v => v.variant.map(d => {
+	// 		if (!!d.price) {
+	// 			price_range_data.push(d.price)
+	// 		}
+	// 	}))
+	// 	setPriceRange(price_range_data)
+	// }, [product])
 
 	const addItemToCart = () => {
-
 		dispatch(addToCart({
-			photo,
+			photo: `${process.env.IMAGE_BASE}/${product.product_image[0].image}`,
 			category,
 			title,
 			quantity,
 			price,
-			variation: [variationData],
+			variant,
 			slug
 		}))
 
 		setQuantity(1)
-		setVariationData({})
+		// setVariationData({})
 		setAdded(true)
 		router.push("/dailylife/cart")
 
 	}
 
-	const handleVariation = (name, value) => {
-		setVariationData(prevState => ({
-			...prevState,
-			[name]: value,
-		}))
+	// const handleVariation = (name, value) => {
+	// 	setVariationData(prevState => ({
+	// 		...prevState,
+	// 		[name]: value,
+	// 	}))
 
-		axios.get(`${process.env.BACKEND_API_BASE}/store/api/variant/${value}/`)
-			.then(res => {
-				setPrice(parseInt(res.data.price))
-				setVariationData(prevState => ({
-					...prevState,
-					[res.data.variation.name]: res.data.variant_name,
-				}))
-			})
-			.catch(err => console.log(err))
+	// 	axios.get(`${process.env.BACKEND_API_BASE}/store/api/variant/${value}/`)
+	// 		.then(res => {
+	// 			setPrice(parseInt(res.data.price))
+	// 			setVariationData(prevState => ({
+	// 				...prevState,
+	// 				[res.data.variation.name]: res.data.variant_name,
+	// 			}))
+	// 		})
+	// 		.catch(err => console.log(err))
 
-		axios.get(`${process.env.BACKEND_API_BASE}/store/api/variant/parent/${value}/`)
-			.then(res => {
-				setPhoto(`${process.env.IMAGE_BASE}/${res.data.attachment}`)
-			})
-			.catch(err => console.log(err))
-	}
+	// 	axios.get(`${process.env.BACKEND_API_BASE}/store/api/variant/parent/${value}/`)
+	// 		.then(res => {
+	// 			setPhoto(`${process.env.IMAGE_BASE}/${res.data.attachment}`)
+	// 		})
+	// 		.catch(err => console.log(err))
+	// }
 
 
 	return (
@@ -104,7 +103,7 @@ export default function Product({ product }) {
 			<Head>
 				<title>{slug}</title>
 			</Head>
-			<div className="container mx-auto py-8 md:py-8 px-4 flex flex-col md:flex-row justify-center md:gap-4">
+			<div className="container mx-auto py-8 md:py-8 px-4 flex flex-col md:flex-row justify-center md:gap-4"> 
 				<div className="flex flex-col justify-center items-center gap-3">
 					<div className="flex flex-col md:flex-row md:p-4 rounded-md bg-white dark:bg-dark-card md:gap-4 shadow-md min-w-0">
 						<Image
@@ -122,6 +121,7 @@ export default function Product({ product }) {
 								</Link>
 							</p>
 							<p className="text-2xl font-semibold break-words">{product.title}</p>
+							<p className="text-sm text-gray-600 dark:text-gray-300">{product.variant}</p>
 							<p className="text-yellow-600 text-xl">
 
 								{/* {product.variations[0].variant[0].parent_variant === null ? 
@@ -130,7 +130,7 @@ export default function Product({ product }) {
 									NumberWithSpace(parseInt(product.variations[0].variant[0].mainVariant[0].price))
 								} */}
 
-								{price !== 0 && NumberWithSpace(price)}
+								{/* {price !== 0 && NumberWithSpace(price)}
 								{price === 0 && priceRange !== [] && Math.max(...range) !== Math.min(...range) &&
 									<>
 										{NumberWithSpace(Math.min(...range))}
@@ -140,20 +140,21 @@ export default function Product({ product }) {
 								}
 								{Math.max(...range) === Math.min(...range) && price === 0.00 &&
 									<>{NumberWithSpace(Math.min(...range))}</>
-								}
+								} */}
+								{NumberWithSpace(product.price)}
 								{quantity > 1 &&
 									<small> * {quantity}pcs</small>
 								}
 							</p>
-							<p className="">
+							{/* <p className="">
 								{quantity > 1 && price != 0 &&
 									<small>
 										Subtotal: <>{NumberWithSpace(price * quantity)} </>
 									</small>
 								}
-							</p>
+							</p> */}
 
-							<div className="flex gap-2 md:gap-4 py-6 justify-center">
+							{/* <div className="flex gap-2 md:gap-4 py-6 justify-center">
 								{variations.map((variation, idx) => (
 									<select
 										className="py-1 px-4 rounded cursor-pointer bg-gray-200 hover:bg-gray-100 dark:bg-dark-button dark:hover:bg-button-hover shadow-md dark:text-gray-50"
@@ -174,7 +175,7 @@ export default function Product({ product }) {
 										))}
 									</select>
 								))}
-							</div>
+							</div> */}
 							<QuantityCount setQuantity={setQuantity} quantity={quantity} />
 							<div className="flex gap-2 py-4">
 								{product.product_image.map((image, idx) => (
@@ -190,11 +191,16 @@ export default function Product({ product }) {
 								))}
 							</div>
 							<div className="flex justify-center gap-4 py-2">
-								<button className="text-gray-50 bg-blue-600 hover:bg-blue-500 py-2 px-4 rounded dark:bg-dark-button dark:hover:bg-button-hover disabled:opacity-50" disabled>Buy now</button>
+								<button 
+									className="text-gray-50 bg-blue-600 hover:bg-blue-500 py-2 px-4 rounded dark:bg-dark-button dark:hover:bg-button-hover disabled:opacity-50" 
+									disabled>
+										Buy now
+									</button>
 								<button
 									className="disabled:opacity-50 text-gray-50 bg-blue-600 hover:bg-blue-500 py-2 px-4 rounded dark:bg-dark-button dark:hover:bg-button-hover"
 									onClick={addItemToCart}
-									disabled={added || variationDataLength < variations.length}>
+									disabled={added}
+								>
 									{added ? 'Added!' : 'Add to Cart'}
 								</button>
 							</div>

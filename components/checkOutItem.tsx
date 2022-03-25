@@ -2,10 +2,10 @@ import Image from 'next/image'
 import NumberWithSpace from './currency';
 import Link from 'next/link'
 
-export default function CheckOutItem({ id, title, price, quantity, photo, variation, slug }) {
-	const variations = Array.isArray(variation) && variation.length ? variation[0] : {};
-	const headers = Object.keys(variations)
-	const body = Object.values(variations)
+export default function CheckOutItem({ id, title, price, quantity, photo, variant, slug }) {
+	// const variations = Array.isArray(variation) && variation.length ? variation[0] : {};
+	// const headers = Object.keys(variations)
+	// const body = Object.values(variations)
     
     return (
         <div className="flex md:flex-row flex-col gap-2 dark:bg-dark-card rounded-md">
@@ -15,15 +15,16 @@ export default function CheckOutItem({ id, title, price, quantity, photo, variat
             <div className="flex flex-col px-4 py-2 md:px-0">
                 <p className="text-md font-semibold text-gray-600 dark:text-gray-50 transition delay-100">{title}</p>
                 <p className="text-sm text-gray-700 dark:text-gray-50 transition delay-100">
-                    {headers.map((header, i) => (
+                    {/* {headers.map((header, i) => (
                         <th key={i}>{header}&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                    ))}
+                    ))} */}
+                    {variant}
                 </p>
-                <p className="text-sm text-gray-700 dark:text-gray-50 transition delay-100">
+                {/* <p className="text-sm text-gray-700 dark:text-gray-50 transition delay-100">
                     {body.map((value, i) => (
                         <td key={i}>{value}&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     ))}
-                </p>
+                </p> */}
                 <p className="text-md text-blue-700 dark:text-blue-400 transition delay-100">
                     {NumberWithSpace(price)} 
                     <span className="text-sm text-gray-500 dark:text-gray-400 transition delay-100">

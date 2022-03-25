@@ -34,15 +34,17 @@ export default function Category({ products }) {
                             <div className="flex flex-col gap-1 px-4 py-1 flex-1 w-72">
                                 <h2 className="text-md break-words">{product.title}</h2>
                                 <p className="flex gap-2">
-                                    {product.variations[0]?.variant.map((vBody,idx) => (
+                                    {/* {product.variations[0]?.variant.map((vBody,idx) => (
                                         <p key={idx}>{vBody.variant_name}</p>
-                                    ))}
+                                    ))} */}
+                                    {product.variant}
                                 </p>
                                 <p className="text-yellow-600 dark:text-yellow-400 text-md">
-                                    {product.variations[0].variant[0].parent_variant === null ? 
+                                    {/* {product.variations[0].variant[0].parent_variant === null ? 
                                         NumberWithSpace(parseInt(product.variations[0].variant[0].price)) 
                                         : 
-                                        NumberWithSpace(parseInt(product.variations[0].variant[0].mainVariant[0].price))}
+                                        NumberWithSpace(parseInt(product.variations[0].variant[0].mainVariant[0].price))} */}
+                                    {product.price}
                                 </p>
                             </div>
                         </div>

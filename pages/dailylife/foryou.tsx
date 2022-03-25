@@ -31,16 +31,18 @@ export default function ForYou() {
                             </Link>
                             <div className="flex flex-col gap-1">
                                 <h2 className="text-md break-words font-semibold">{product.title}</h2>
-                                <p className="flex gap-2">
-                                    {product.variations[0]?.variant.map((vBody, idx) => (
+                                <p className="flex gap-2 text-sm">
+                                    {/* {product.variations[0]?.variant.map((vBody, idx) => (
                                         <p key={idx}>{vBody.variant_name}</p>
-                                    ))}
+                                    ))} */}
+                                    {product.variant}
                                 </p>
                                 <p className="text-yellow-600 dark:text-yellow-400 text-md">
-                                    {product.variations[0].variant[0].parent_variant === null ? 
+                                    {/* {product.variations[0].variant[0].parent_variant === null ? 
                                         NumberWithSpace(parseInt(product.variations[0].variant[0].price)) 
                                         : 
-                                        NumberWithSpace(parseInt(product.variations[0].variant[0].mainVariant[0].price))}
+                                        NumberWithSpace(parseInt(product.variations[0].variant[0].mainVariant[0].price))} */}
+                                        {NumberWithSpace(product.price)}
                                 </p>
                             </div>
                         </div>

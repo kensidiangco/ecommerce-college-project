@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useSession } from 'next-auth/client'
+// import { useSession } from 'next-auth/client'
 import CheckoutLoginDropdown from '../../components/checkoutLoginDropdown'
 import { useSelector } from "react-redux"
 import { selectItems, selectProducts, selectTotal } from "../../slices/cartSlice"
@@ -9,7 +9,7 @@ import NumberWithSpace from '../../components/currency'
 import CartItem from '../../components/cartItem'
 
 export default function Cart() {
-	const [session] = useSession()
+	// const [session] = useSession()
 
     const products = useSelector(selectProducts)
     const items = useSelector(selectItems)
@@ -41,12 +41,12 @@ export default function Cart() {
 
 								<div className="py-5 px-3 md:p-3 flex flex-col items-center md:bg-none dark:bg-dark-card bg-gray-50 rounded-md shadow-md md:shadow-none justify-around space-y-4 md:space-y-0">
 									<p className="text-2xl text-blue-700 dark:text-blue-400 transition delay-50">Total: {NumberWithSpace(totalPrice)}</p>
-										{!session && <CheckoutLoginDropdown />}
-										{session &&
-											<Link href="/dailylife/checkout" passHref>
-												<p className="p-3 md:p-2 md:px-4 bg-blue-500 text-gray-50 dark:bg-dark-button dark:hover:bg-button-hover rounded-md hover:bg-blue-400 transition delay-50 cursor-pointer">Proceed to checkout</p>
-											</Link>
-										}
+										{/* {!session && <CheckoutLoginDropdown />} */}
+										
+										<Link href="/dailylife/checkout" passHref>
+											<p className="p-3 md:p-2 md:px-4 bg-blue-500 text-gray-50 dark:bg-dark-button dark:hover:bg-button-hover rounded-md hover:bg-blue-400 transition delay-50 cursor-pointer">Proceed to checkout</p>
+										</Link>
+									
 								</div>
 							</div>
 						}

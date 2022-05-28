@@ -21,6 +21,7 @@ function Checkout() {
 
 	const [psgcAPI, setPsgcAPI] = useState([])
 
+	const [email, setEmail] = useState('')
 	const [recipient, setRecipient] = useState('')
 	const [phone, setPhone] = useState('')
 	const [unit_or_floor, set_unit_or_floor] = useState('')
@@ -66,13 +67,13 @@ function Checkout() {
 		// }
 
 		let data = {
-			email: session.user.email,
+			email: email,
 			recipient_name: recipient,
 			phone_number: phone,
 			region: regionName,
 			city: city,
 			district: district,
-			barangay: barangay,
+			barangay: barangay, 
 			street: street,
 			unit_or_floor: unit_or_floor,
 			total: parseInt(totalPrice),
@@ -144,7 +145,11 @@ function Checkout() {
 					<form onSubmit={onSubmit} autoComplete="off">
 						<div className="flex flex-col gap-2 p-5 rounded-md shadow-md bg-gray-200 dark:bg-dark-card text-gray-800 dark:text-gray-50">
 							<h2 className="text-xl font-semibold">Information</h2>
-							<input type="email" name="email" placeholder="Email" value={!loading? session.user?.email : ""} className="p-2 rounded-md" required/>
+							{!loading && session ? 
+								<input type="email" name="email" placeholder="Input your valid email" value={session.user?.email} className="p-2 rounded-md" required/>
+								:
+								<input type="email" name="email" placeholder="Input your valid email" value={email} onChange={e => setEmail(e.target.value)} className="p-2 rounded-md" required/>
+							}
 
 							<h2 className="mt-2 text-xl font-semibold">Delivery address</h2>
 							<input type="text" name="recipient" placeholder="Recipient's Name" className="p-2 rounded-md" onChange={(e) => setRecipient(e.target.value)} value={recipient} required/>
@@ -238,4 +243,5 @@ export async function getStaticProps() {
 	}
 }
 
-export default withAuth(3*60)(Checkout);
+// export default withAuth(3*60)(Checkout);
+export default Checkout;

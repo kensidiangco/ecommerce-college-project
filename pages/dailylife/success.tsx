@@ -79,4 +79,4 @@ function Success() {
     )
 }
 
-export default withAuth(3 * 60)(Success)
+export default Success
